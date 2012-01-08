@@ -17,6 +17,6 @@ void datums_test();
 void datums_grundfunktionen();
 void datums_berechnungen();
 void datums_vergleiche();
-void falsche_daten();
+void datums_falsche_daten();
 
 #endif

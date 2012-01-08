@@ -23,8 +23,8 @@ class Mensch
     Mensch();
     Mensch(char das_geschlecht);
 
-    char liefere_geschlecht() const;
-    string liefere_geschlecht_ausgeschrieben() const;
+    virtual char liefere_geschlecht() const;
+    virtual string liefere_geschlecht_ausgeschrieben() const;
 };
 
 std::ostream& operator<<(std::ostream& ausgabe, const Mensch& mensch);

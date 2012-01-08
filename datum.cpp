@@ -9,7 +9,8 @@
 #include "header/datum.h"
 
 /**
- * Der Default-Konstruktor. Initialisiert das aktuelle Datum.
+ * Der Default-Konstruktor.
+ * Initialisiert das aktuelle Datum.
  */
 Datum::Datum()
 {

@@ -13,6 +13,7 @@ using namespace std;
 #include "adresse_suite.h"
 #include "datums_suite.h"
 #include "mensch_suite.h"
+#include "namen_suite.h"
 #include "ort_suite.h"
 #include "telefonnummer_suite.h"
 #include "zeit_suite.h"

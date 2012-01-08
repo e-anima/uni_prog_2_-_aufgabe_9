@@ -8,7 +8,8 @@ int main()
   //ort_test();
   //adresse_test();
   //telefonnummer_test();
-  zeit_test();
+  //zeit_test();
+  name_test();
 
   return 0;
 }

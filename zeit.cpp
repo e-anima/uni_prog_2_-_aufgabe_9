@@ -1,4 +1,7 @@
 /**
+ *  Repraesentierte eine Zeit.
+ *  Diese kann aus Stunden, Minuten und Sekunden bestehen.
+ *  Man kann sich diese ausgeben lassen, vergelichen oder auch hochzaehlen bzw. runterzaehlen.
  *
  *  @author Markus Paeschke (s0531524)
  */
@@ -251,7 +254,7 @@ bool Zeit::operator>(const Zeit& vergleichszeit)
  * Prueft ob eine Zeit gleich ein anderes ist.
  * Die Zeiten sind gleich, wenn sowohl die Stunden, die Minuten, als auch die Sekunden gleich sind.
  *
- * @param  vergleichsdatum  Daie Zeit, mit dem der Vergleich durchgefuehrt werden soll.
+ * @param  vergleichsdatum  Die Zeit, mit dem der Vergleich durchgefuehrt werden soll.
  *
  * @return                  Ein true, wenn die Zeiten gleich sind, bzw. ein false, wenn sie ungleich sein sollten.
  */

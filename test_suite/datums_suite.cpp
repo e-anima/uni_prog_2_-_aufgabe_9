@@ -7,7 +7,7 @@ void datums_test()
   datums_grundfunktionen();
   datums_berechnungen();
   datums_vergleiche();
-  falsche_daten();
+  datums_falsche_daten();
 
   cout << endl << endl << "-------------------- Datums Test Ende ----------------" << endl << endl;
 }
@@ -97,7 +97,7 @@ void datums_vergleiche()
        << "Vergleich " << zweites_datum.liefere_standarddatum() << " >= " << erstes_datum.liefere_standarddatum()  << " = " << (zweites_datum >= erstes_datum)  << endl;
 }
 
-void falsche_daten()
+void datums_falsche_daten()
 {
   cout << endl << "------- Falsche Daten -------" << endl;
   Datum erstes_datum = Datum(32, 6, 1986);
