@@ -1,0 +1,46 @@
+# Teil 1: Optionen
+include_dateien = [                         # wo wird nach .h Dateien gesucht?
+  '.',                                      # im lokalen Verzeichnis
+  './header',
+  './..',
+  './../header'
+  
+]
+cpp_standard    = [                         # Angaben zum Standard
+  '-std=c++98',                             # c99
+  '-pedantic'                               # keine Erweiterungen zulaessig
+]
+warnungen       = [                         # Einstellungen zu Warnungen
+  '-Wall',                                  # viel meckern
+  '-Wextra',                                # extra viel meckern
+  '-Werror'                                 # Warnungen sind Fehler
+]
+
+# Teil 2: Definitionen des Environments
+std = Environment(
+  CXXFLAGS  = cpp_standard + warnungen,
+  CCPPATH   = include_dateien
+)
+
+# Teil 3: Programm bauen
+cpp_dateien     = [                         # hier C++-Dateien einfuegen
+  '../adresse.cpp',
+  '../datum.cpp',
+  '../eingabe.cpp',
+  '../helfer.cpp',
+  '../mensch.cpp',
+  '../ort.cpp',
+  '../telefonnummer.cpp',
+  #'../person.cpp',
+  '../zeit.cpp',
+  'adresse_suite.cpp',
+  'datums_suite.cpp',
+  'mensch_suite.cpp',
+  'ort_suite.cpp',
+  'telefonnummer_suite.cpp',
+  #'person_suite.cpp',
+  'test_suite.cpp',
+  'zeit_suite.cpp'
+]
+programm_name = 'test_suite'             # hier Programmnamen festlegen
+std.Program(programm_name, cpp_dateien)    # Programm bauen
