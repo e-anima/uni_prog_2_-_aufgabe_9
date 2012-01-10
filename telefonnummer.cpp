@@ -134,6 +134,84 @@ string Telefonnummer::liefere_gesamte_nummer() const
 }
 
 /**
+ * Ueberlaedt den < Operator.
+ * Prueft ob eine Telefonnummer kleiner als eine andere ist.
+ *
+ * @param  vergleichsnummer  Die Telefonnummer, mit dem der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                   Ein true, wenn die Telefonnummer kleiner ist, bzw. ein false, wenn sie gleich oder groesser sein sollte.
+ */
+bool Telefonnummer::operator<(const Telefonnummer& vergleichsnummer)
+{
+  return (liefere_gesamte_nummer() < vergleichsnummer.liefere_gesamte_nummer());
+}
+
+/**
+ * Ueberlaedt den > Operator.
+ * Prueft ob eine Telefonnummer groesser als eine andere ist.
+ *
+ * @param  vergleichsnummer  Die Telefonnummer, mit dem der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                   Ein true, wenn die Telefonnummer groesser ist, bzw. ein false, wenn sie gleich oder kleiner sein sollte.
+ */
+bool Telefonnummer::operator>(const Telefonnummer& vergleichsnummer)
+{
+  return !(*this <= vergleichsnummer);
+}
+
+/**
+ * Ueberlaedt den == Operator.
+ * Prueft ob zwei Telefonnummer gleich sind.
+ *
+ * @param  vergleichsnummer  Die Telefonnummer, mit dem der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                   Ein true, wenn die Telefonnummern gleich sind, bzw. ein false, wenn sie ungleich sein sollten.
+ */
+bool Telefonnummer::operator==(const Telefonnummer& vergleichsnummer)
+{
+  return (liefere_gesamte_nummer() == vergleichsnummer.liefere_gesamte_nummer());
+}
+
+/**
+ * Ueberlaedt den != Operator.
+ * Prueft ob zwei Telefonnummer ungleich sind.
+ *
+ * @param  vergleichsnummer  Die Telefonnummer, mit dem der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                   Ein true, wenn die Telefonnummern ungleich sind, bzw. ein false, wenn sie gleich sein sollten.
+ */
+bool Telefonnummer::operator!=(const Telefonnummer& vergleichsnummer)
+{
+  return !(*this == vergleichsnummer);
+}
+
+/**
+ * Ueberlaedt den <= Operator.
+ * Prueft ob eine Telefonnummer kleiner oder gleich einer anderen ist.
+ *
+ * @param  vergleichsnummer  Die Telefonnummer, mit dem der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                   Ein true, wenn die Telefonnummer gleich oder kleiner ist, bzw. ein false, wenn groesser sein sollten.
+ */
+bool Telefonnummer::operator<=(const Telefonnummer& vergleichsnummer)
+{
+  return (*this < vergleichsnummer || *this == vergleichsnummer);
+}
+
+/**
+ * Ueberlaedt den >= Operator.
+ * Prueft ob eine Telefonnummer groesser oder gleich einer anderen ist.
+ *
+ * @param  vergleichsnummer  Die Telefonnummer, mit dem der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                   Ein true, wenn die Telefonnummer gleich oder groesser ist, bzw. ein false, wenn kleiner sein sollten.
+ */
+bool Telefonnummer::operator>=(const Telefonnummer& vergleichsnummer)
+{
+  return (*this > vergleichsnummer || *this == vergleichsnummer);
+}
+
+/**
  * Initialisiert eine Telefonnummer.
  * Wenn die Landesvorwahl leer gelassen wird, wird diese automatisch auf +49 fuer Deutschland gesetzt.
  * Wird hingegen zusaetzlich die Ortvorwahl leer gelassen, wird diese auf 30 fuer Berlin gesetzt

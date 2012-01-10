@@ -32,6 +32,15 @@ Mensch::Mensch(char das_geschlecht)
 }
 
 /**
+ * Der Destructor der Klasse.
+ * Zerstoert das Objekt.
+ */
+Mensch::~Mensch()
+{
+
+}
+
+/**
  * Gibt das Geschlecht des Menschen zurueck.
  *
  * @return  Das Geschlecht des Menschen.
@@ -49,6 +58,16 @@ char Mensch::liefere_geschlecht() const
 string Mensch::liefere_geschlecht_ausgeschrieben() const
 {
   return (geschlecht == 'm') ? "maennlich" : "weiblich";
+}
+
+/**
+ * Gibt die Beschreibung des Menschen als Text wieder.
+ *
+ * @return  Die Beschreibung des Menschen als Text.
+ */
+string Mensch::liefere_beschreibung() const
+{
+  return "Dieser Mensch ist " + liefere_geschlecht_ausgeschrieben();
 }
 
 /**
@@ -79,7 +98,7 @@ std::ostream& operator<<(std::ostream& ausgabe, const Mensch& mensch)
 std::istream& operator>>(std::istream& eingabe, Mensch& mensch)
 {
   char moegliche_eingaben[] = {'m', 'w'};
-  char geschlecht = erfasse_zeichen("Bitte geben Sie das Geschlecht des Menschen ein", moegliche_eingaben, 2);
+  char geschlecht = erfasse_zeichen("Bitte geben Sie das Geschlecht des Menschen ein [m, w]", moegliche_eingaben, 2);
   mensch = Mensch(geschlecht);
   return eingabe;
 }

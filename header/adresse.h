@@ -43,6 +43,13 @@ class Adresse : public Ort
 
     virtual string liefere_ortsbeschreibung() const;
 
+    bool operator<(const Adresse& vergleichsadresse);
+    bool operator>(const Adresse& vergleichsadresse);
+    bool operator==(const Adresse& vergleichsadresse);
+    bool operator!=(const Adresse& vergleichsadresse);
+    bool operator<=(const Adresse& vergleichsadresse);
+    bool operator>=(const Adresse& vergleichsadresse);
+
   private:
     void initialisiere_adresse(int die_postleitzahl = 12345, string die_strasse = "Musterstrasse", int die_hausnummer = 0);
 };

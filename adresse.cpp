@@ -251,6 +251,36 @@ string Adresse::liefere_ortsbeschreibung() const
   return adresse;
 }
 
+bool Adresse::operator<(const Adresse& vergleichsadresse)
+{
+  return liefere_ortsbeschreibung() < vergleichsadresse.liefere_ortsbeschreibung();
+}
+
+bool Adresse::operator>(const Adresse& vergleichsadresse)
+{
+  return !(*this <= vergleichsadresse);
+}
+
+bool Adresse::operator==(const Adresse& vergleichsadresse)
+{
+  return liefere_ortsbeschreibung() == vergleichsadresse.liefere_ortsbeschreibung();
+}
+
+bool Adresse::operator!=(const Adresse& vergleichsadresse)
+{
+  return !(*this == vergleichsadresse);
+}
+
+bool Adresse::operator<=(const Adresse& vergleichsadresse)
+{
+  return (*this < vergleichsadresse || *this == vergleichsadresse);
+}
+
+bool Adresse::operator>=(const Adresse& vergleichsadresse)
+{
+  return (*this > vergleichsadresse || *this == vergleichsadresse);
+}
+
 /**
  * Initialisiert eine Datum.
  * Wenn die Hausnummer leer gelassen wird, wird sie automatisch auf 0 gesetzt.

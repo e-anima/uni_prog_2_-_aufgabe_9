@@ -82,5 +82,29 @@ void adresse_grundfunktionen()
 
 void adresse_vergleiche()
 {
+  cout << endl << "------- Ortvergleiche -------" << endl;
+  Adresse erste_adresse  = Adresse();
+  Adresse zweite_adresse = Adresse("Hamburg");
 
+  cout << "Vergleich " << erste_adresse  << " < "  << zweite_adresse << " = " << (erste_adresse  < zweite_adresse)  << endl
+       << "Vergleich " << zweite_adresse << " < "  << erste_adresse  << " = " << (zweite_adresse < erste_adresse)   << endl
+       << "Vergleich " << zweite_adresse << " < "  << zweite_adresse << " = " << (zweite_adresse < zweite_adresse)  << endl << endl
+
+       << "Vergleich " << erste_adresse  << " > "  << zweite_adresse << " = " << (erste_adresse  > zweite_adresse)  << endl
+       << "Vergleich " << zweite_adresse << " > "  << erste_adresse  << " = " << (zweite_adresse > erste_adresse)   << endl
+       << "Vergleich " << zweite_adresse << " > "  << zweite_adresse << " = " << (zweite_adresse > zweite_adresse)  << endl << endl
+
+       << "Vergleich " << zweite_adresse << " == " << erste_adresse  << " = " << (zweite_adresse == erste_adresse)  << endl
+       << "Vergleich " << zweite_adresse << " == " << zweite_adresse << " = " << (zweite_adresse == zweite_adresse) << endl << endl
+
+       << "Vergleich " << zweite_adresse << " != " << erste_adresse  << " = " << (zweite_adresse != erste_adresse)  << endl
+       << "Vergleich " << zweite_adresse << " != " << zweite_adresse << " = " << (zweite_adresse != zweite_adresse) << endl << endl
+
+       << "Vergleich " << erste_adresse  << " <= " << zweite_adresse << " = " << (erste_adresse  <= zweite_adresse) << endl
+       << "Vergleich " << zweite_adresse << " <= " << erste_adresse  << " = " << (zweite_adresse <= erste_adresse)  << endl
+       << "Vergleich " << zweite_adresse << " <= " << zweite_adresse << " = " << (zweite_adresse <= zweite_adresse) << endl << endl
+
+       << "Vergleich " << erste_adresse  << " >= " << zweite_adresse << " = " << (erste_adresse  >= zweite_adresse) << endl
+       << "Vergleich " << erste_adresse  << " >= " << erste_adresse  << " = " << (erste_adresse  >= erste_adresse)  << endl
+       << "Vergleich " << zweite_adresse << " >= " << erste_adresse  << " = " << (zweite_adresse >= erste_adresse)  << endl;
 }

@@ -9,7 +9,8 @@ int main()
   //adresse_test();
   //telefonnummer_test();
   //zeit_test();
-  name_test();
+  //name_test();
+  person_test();
 
   return 0;
 }

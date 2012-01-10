@@ -134,6 +134,86 @@ string Ort::liefere_ortsbeschreibung() const
 }
 
 /**
+ * Ueberlaedt den < Operator.
+ * Prueft ob eine Ort kleiner als eine andere ist.
+ *
+ * @param  vergleichsort  Der Ort, mit dem der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                Ein true, wenn der Ort kleiner ist, bzw. ein false, wenn er gleich oder groesser sein sollte.
+ */
+bool Ort::operator<(const Ort& vergleichsort)
+{
+  return liefere_ortsbeschreibung() < vergleichsort.liefere_ortsbeschreibung();
+}
+
+/**
+ * Ueberlaedt den > Operator.
+ * Prueft ob eine Ort groesser als eine andere ist.
+ *
+ * @param  vergleichsort  Der Ort, mit dem der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                Ein true, wenn der Ort groesser ist, bzw. ein false, wenn er gleich oder kleiner sein sollte.
+ */
+bool Ort::operator>(const Ort& vergleichsort)
+{
+  return !(liefere_ortsname() <= vergleichsort.liefere_ortsname());
+}
+
+/**
+ * Ueberlaedt den == Operator.
+ * Prueft ob zwei Orte gleich sind.
+ * Sie gelten als gleich, wenn sowohl der Ort selber, als auch das Land und das Landesteil gleich sind.
+ *
+ * @param  vergleichsort  Der Ort, mit dem der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                Ein true, wenn die Orte gleich sind, bzw. ein false, wenn sie ungleich sein sollte.
+ */
+bool Ort::operator==(const Ort& vergleichsort)
+{
+  return liefere_ortsname() == vergleichsort.liefere_ortsname();
+}
+
+/**
+ * Ueberlaedt den != Operator.
+ * Prueft ob zwei Orte ungleich sind.
+ * Sie gelten als ungleich, wenn sowohl der Ort selber, als auch das Land und das Landesteil ungleich sind.
+ *
+ * @param  vergleichsort  Der Ort, mit dem der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                Ein true, wenn die Orte ungleich sind, bzw. ein false, wenn sie gleich sein sollte.
+ */
+bool Ort::operator!=(const Ort& vergleichsort)
+{
+  return !(*this == vergleichsort);
+}
+
+/**
+ * Ueberlaedt den <= Operator.
+ * Prueft ob eine Ort kleiner oder gleich einem andere ist.
+ *
+ * @param  vergleichsort  Der Ort, mit dem der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                Ein true, wenn der Ort kleiner oder gleich ist, bzw. ein false, wenn er groesser sein sollte.
+ */
+bool Ort::operator<=(const Ort& vergleichsort)
+{
+  return (*this < vergleichsort || *this == vergleichsort);
+}
+
+/**
+ * Ueberlaedt den >= Operator.
+ * Prueft ob eine Ort groesser oder gleich einem andere ist.
+ *
+ * @param  vergleichsort  Der Ort, mit dem der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                Ein true, wenn der Ort groesser oder gleich ist, bzw. ein false, wenn er kleiner sein sollte.
+ */
+bool Ort::operator>=(const Ort& vergleichsort)
+{
+  return (*this > vergleichsort || *this == vergleichsort);
+}
+
+/**
  * Ueberlaedt den << Operator.
  * Gibt einen Ort, mit der Standardformatierung, in den Outputstream.
  *

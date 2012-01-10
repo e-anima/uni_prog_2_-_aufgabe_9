@@ -32,15 +32,15 @@ cpp_dateien     = [                         # hier C++-Dateien einfuegen
   '../name.cpp',
   '../ort.cpp',
   '../telefonnummer.cpp',
-  #'../person.cpp',
+  '../person.cpp',
   '../zeit.cpp',
   'adresse_suite.cpp',
   'datums_suite.cpp',
   'mensch_suite.cpp',
   'namen_suite.cpp',
   'ort_suite.cpp',
+  'person_suite.cpp',
   'telefonnummer_suite.cpp',
-  #'person_suite.cpp',
   'test_suite.cpp',
   'zeit_suite.cpp'
 ]

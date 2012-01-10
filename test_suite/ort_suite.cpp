@@ -48,5 +48,29 @@ void ort_grundfunktionen()
 
 void ort_vergleiche()
 {
+  cout << endl << "------- Ortvergleiche -------" << endl;
+  Ort erster_ort = Ort();
+  Ort zweite_ort = Ort("Hamburg");
 
+  cout << "Vergleich " << erster_ort << " < "  << zweite_ort << " = " << (erster_ort  < zweite_ort)  << endl
+       << "Vergleich " << zweite_ort << " < "  << erster_ort << " = " << (zweite_ort < erster_ort)   << endl
+       << "Vergleich " << zweite_ort << " < "  << zweite_ort << " = " << (zweite_ort < zweite_ort)   << endl << endl
+
+       << "Vergleich " << erster_ort << " > "  << zweite_ort << " = " << (erster_ort  > zweite_ort)  << endl
+       << "Vergleich " << zweite_ort << " > "  << erster_ort << " = " << (zweite_ort > erster_ort)   << endl
+       << "Vergleich " << zweite_ort << " > "  << zweite_ort << " = " << (zweite_ort > zweite_ort)   << endl << endl
+
+       << "Vergleich " << zweite_ort << " == " << erster_ort << " = " << (zweite_ort == erster_ort)  << endl
+       << "Vergleich " << zweite_ort << " == " << zweite_ort << " = " << (zweite_ort == zweite_ort)  << endl << endl
+
+       << "Vergleich " << zweite_ort << " != " << erster_ort << " = " << (zweite_ort != erster_ort)  << endl
+       << "Vergleich " << zweite_ort << " != " << zweite_ort << " = " << (zweite_ort != zweite_ort)  << endl << endl
+
+       << "Vergleich " << erster_ort << " <= " << zweite_ort << " = " << (erster_ort  <= zweite_ort) << endl
+       << "Vergleich " << zweite_ort << " <= " << erster_ort << " = " << (zweite_ort <= erster_ort)  << endl
+       << "Vergleich " << zweite_ort << " <= " << zweite_ort << " = " << (zweite_ort <= zweite_ort)  << endl << endl
+
+       << "Vergleich " << erster_ort << " >= " << zweite_ort << " = " << (erster_ort  >= zweite_ort) << endl
+       << "Vergleich " << erster_ort << " >= " << erster_ort << " = " << (erster_ort  >= erster_ort) << endl
+       << "Vergleich " << zweite_ort << " >= " << erster_ort << " = " << (zweite_ort >= erster_ort)  << endl;
 }

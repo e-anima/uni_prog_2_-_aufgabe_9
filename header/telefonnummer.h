@@ -38,6 +38,13 @@ class Telefonnummer
 
     virtual string liefere_gesamte_nummer() const;
 
+    bool operator<(const Telefonnummer& vergleichsnummer);
+    bool operator>(const Telefonnummer& vergleichsnummer);
+    bool operator==(const Telefonnummer& vergleichsnummer);
+    bool operator!=(const Telefonnummer& vergleichsnummer);
+    bool operator<=(const Telefonnummer& vergleichsnummer);
+    bool operator>=(const Telefonnummer& vergleichsnummer);
+
   private:
     void initialisiere_telefonnummer(string die_teilnehmerkennung = "123456", string die_ortsvorwahl = "30", string die_landesvorwahl = "+49");
 };

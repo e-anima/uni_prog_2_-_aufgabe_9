@@ -38,12 +38,12 @@ class Ort
     string liefere_ortsname() const;
     string liefere_ortsbeschreibung() const;
 
-    /*bool operator<(const Ort& vergelichsort);
-    bool operator>(const Ort& vergelichsort);
-    bool operator==(const Ort& vergelichsort);
-    bool operator!=(const Ort& vergelichsort);
-    bool operator<=(const Ort& vergelichsort);
-    bool operator>=(const Ort& vergelichsort);*/
+    bool operator<(const Ort& vergleichsort);
+    bool operator>(const Ort& vergleichsort);
+    bool operator==(const Ort& vergleichsort);
+    bool operator!=(const Ort& vergleichsort);
+    bool operator<=(const Ort& vergleichsort);
+    bool operator>=(const Ort& vergleichsort);
 };
 
 std::ostream& operator<<(std::ostream& ausgabe, const Ort& ort);

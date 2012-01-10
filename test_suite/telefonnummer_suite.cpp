@@ -46,4 +46,28 @@ void telefonnummer_grundfunktionen()
 void telefonnummer_vergleiche()
 {
   cout << endl << "------- Telefonnummervergleiche -------" << endl;
+  Telefonnummer erste_nummer  = Telefonnummer();
+  Telefonnummer zweite_nummer = Telefonnummer("336984");
+
+  cout << "Vergleich " << erste_nummer  << " < "  << zweite_nummer << " = " << (erste_nummer  < zweite_nummer)  << endl
+       << "Vergleich " << zweite_nummer << " < "  << erste_nummer  << " = " << (zweite_nummer < erste_nummer)   << endl
+       << "Vergleich " << zweite_nummer << " < "  << zweite_nummer << " = " << (zweite_nummer < zweite_nummer)  << endl << endl
+
+       << "Vergleich " << erste_nummer  << " > "  << zweite_nummer << " = " << (erste_nummer  > zweite_nummer)  << endl
+       << "Vergleich " << zweite_nummer << " > "  << erste_nummer  << " = " << (zweite_nummer > erste_nummer)   << endl
+       << "Vergleich " << zweite_nummer << " > "  << zweite_nummer << " = " << (zweite_nummer > zweite_nummer)  << endl << endl
+
+       << "Vergleich " << zweite_nummer << " == " << erste_nummer  << " = " << (zweite_nummer == erste_nummer)  << endl
+       << "Vergleich " << zweite_nummer << " == " << zweite_nummer << " = " << (zweite_nummer == zweite_nummer) << endl << endl
+
+       << "Vergleich " << zweite_nummer << " != " << erste_nummer  << " = " << (zweite_nummer != erste_nummer)  << endl
+       << "Vergleich " << zweite_nummer << " != " << zweite_nummer << " = " << (zweite_nummer != zweite_nummer) << endl << endl
+
+       << "Vergleich " << erste_nummer  << " <= " << zweite_nummer << " = " << (erste_nummer  <= zweite_nummer) << endl
+       << "Vergleich " << zweite_nummer << " <= " << erste_nummer  << " = " << (zweite_nummer <= erste_nummer)  << endl
+       << "Vergleich " << zweite_nummer << " <= " << zweite_nummer << " = " << (zweite_nummer <= zweite_nummer)  << endl << endl
+
+       << "Vergleich " << erste_nummer  << " >= " << zweite_nummer << " = " << (erste_nummer  >= zweite_nummer) << endl
+       << "Vergleich " << erste_nummer  << " >= " << erste_nummer  << " = " << (erste_nummer  >= erste_nummer)  << endl
+       << "Vergleich " << zweite_nummer << " >= " << erste_nummer  << " = " << (zweite_nummer >= erste_nummer)  << endl;
 }

@@ -9,11 +9,12 @@
 #include <iomanip>
 #include <iostream>
 #include <string>
+#include "beschreibbar.h"
 #include "eingabe.h"
 
 using std::string;
 
-class Mensch
+class Mensch : public Beschreibbar
 {
   private:
     /** Das Geschlecht des Menschen. m fuer maennliche oder w fuer weiblich. **/
@@ -23,8 +24,11 @@ class Mensch
     Mensch();
     Mensch(char das_geschlecht);
 
-    virtual char liefere_geschlecht() const;
-    virtual string liefere_geschlecht_ausgeschrieben() const;
+    virtual ~Mensch();
+
+    char liefere_geschlecht() const;
+    string liefere_geschlecht_ausgeschrieben() const;
+    virtual string liefere_beschreibung() const;
 };
 
 std::ostream& operator<<(std::ostream& ausgabe, const Mensch& mensch);

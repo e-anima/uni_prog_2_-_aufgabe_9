@@ -18,8 +18,25 @@
  */
 Person::Person()
 {
-  geschlecht    = 'm';
   nationalitaet = "deutsch";
+}
+
+/**
+ * Initialisiert eine Person.
+ * Alle Angaben ueber die Person muessen gesetzt werden.
+ *
+ * @param  das_geschlecht     Das Geschlecht der Person.
+ * @param  der_name           Der Name der Person.
+ * @param  das_geburtsdatum   Das Geburtsdatum der Person.
+ * @param  der_geburtsort     Der Geburtsort der Person.
+ * @param  die_wohnanschrift  Die Wohnanschrift der Person.
+ * @param  die_nationalitaet  Die Nationalitaet der Person.
+ * @param  die_telefonnumer   Die Telefonnummer der Person.
+ */
+Person::Person(char das_geschlecht, Name der_name, Datum das_geburtsdatum, Ort der_geburtsort, Adresse die_wohnanschrift, string die_nationalitaet, Telefonnummer die_telefonnummer)
+       :Mensch(das_geschlecht), name(der_name), geburtsdatum(das_geburtsdatum), geburtsort(der_geburtsort), wohnanschrift(die_wohnanschrift), telefonnummer(die_telefonnummer)
+{
+  nationalitaet = die_nationalitaet;
 }
 
 /**
@@ -34,9 +51,8 @@ Person::Person()
  * @param  die_nationalitaet  Die Nationalitaet der Person.
  */
 Person::Person(char das_geschlecht, Name der_name, Datum das_geburtsdatum, Ort der_geburtsort, Adresse die_wohnanschrift, string die_nationalitaet)
-       :name(der_name), geburtsdatum(das_geburtsdatum), geburtsort(der_geburtsort), wohnanschrift(die_wohnanschrift)
+       :Mensch(das_geschlecht), name(der_name), geburtsdatum(das_geburtsdatum), geburtsort(der_geburtsort), wohnanschrift(die_wohnanschrift)
 {
-  geschlecht    = das_geschlecht;
   nationalitaet = die_nationalitaet;
 }
 
@@ -53,9 +69,8 @@ Person::Person(char das_geschlecht, Name der_name, Datum das_geburtsdatum, Ort d
  * @param  die_wohnanschrift  Die Wohnanschrift der Person.
  */
 Person::Person(char das_geschlecht, Name der_name, Datum das_geburtsdatum, Ort der_geburtsort, Adresse die_wohnanschrift)
-       :name(der_name), geburtsdatum(das_geburtsdatum), geburtsort(der_geburtsort), wohnanschrift(die_wohnanschrift)
+       :Mensch(das_geschlecht), name(der_name), geburtsdatum(das_geburtsdatum), geburtsort(der_geburtsort), wohnanschrift(die_wohnanschrift)
 {
-  geschlecht    = das_geschlecht;
   nationalitaet = "deutsch";
 }
 
@@ -71,9 +86,8 @@ Person::Person(char das_geschlecht, Name der_name, Datum das_geburtsdatum, Ort d
  * @param  der_geburtsort     Der Geburtsort der Person.
  */
 Person::Person(char das_geschlecht, Name der_name, Datum das_geburtsdatum, Ort der_geburtsort)
-       :name(der_name), geburtsdatum(das_geburtsdatum), geburtsort(der_geburtsort)
+       :Mensch(das_geschlecht), name(der_name), geburtsdatum(das_geburtsdatum), geburtsort(der_geburtsort)
 {
-  geschlecht    = das_geschlecht;
   nationalitaet = "deutsch";
 }
 
@@ -88,9 +102,8 @@ Person::Person(char das_geschlecht, Name der_name, Datum das_geburtsdatum, Ort d
  * @param  das_geburtsdatum   Das Geburtsdatum der Person.
  */
 Person::Person(char das_geschlecht, Name der_name, Datum das_geburtsdatum)
-       :name(der_name), geburtsdatum(das_geburtsdatum)
+       :Mensch(das_geschlecht), name(der_name), geburtsdatum(das_geburtsdatum)
 {
-  geschlecht    = das_geschlecht;
   nationalitaet = "deutsch";
 }
 
@@ -103,10 +116,18 @@ Person::Person(char das_geschlecht, Name der_name, Datum das_geburtsdatum)
  * @param  der_name        Der Name der Person.
  */
 Person::Person(char das_geschlecht, Name der_name)
-       :name(der_name)
+       :Mensch(das_geschlecht), name(der_name)
 {
-  geschlecht    = das_geschlecht;
   nationalitaet = "deutsch";
+}
+
+/**
+ * Der Destructor der Klasse.
+ * Zerstoert das Objekt.
+ */
+Person::~Person()
+{
+
 }
 
 /**
@@ -269,10 +290,18 @@ std::ostream& operator<<(std::ostream& ausgabe, const Person& person)
  *
  * @return          Der Inputstream.
  */
-/*std::istream& operator>>(std::istream& eingabe, Person& person)
+std::istream& operator>>(std::istream& eingabe, Person& person)
 {
-  string vorname  = erfasse_string("Bitte den Vornamen eingeben", 100);
-  string nachname = erfasse_string("Bitte den Nachnamen eingeben", 100);
-  name            = Name(vorname, nachname);
+  char moegliche_eingaben[] = {'m', 'w'};
+  char geschlecht = erfasse_zeichen("Bitte geben Sie das Geschlecht der Person ein [m, w]", moegliche_eingaben, 2);
+  Name der_name;
+  Datum das_geburtsdatum;
+  Ort der_geburtsort;
+  Adresse die_wohnanschrift;
+  Telefonnummer die_telefonnummer;
+  eingabe >> der_name >> das_geburtsdatum >> der_geburtsort >> die_wohnanschrift;
+  string die_nationalitaet = erfasse_string("Bitte geben Sie die Nationalitaet der Person ein", 50);
+  eingabe >> die_telefonnummer;
+  person = Person(geschlecht, der_name, das_geburtsdatum, der_geburtsort, die_wohnanschrift, die_nationalitaet, die_telefonnummer);
   return eingabe;
-}*/
+}
