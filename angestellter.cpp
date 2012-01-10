@@ -7,29 +7,35 @@
 
 Angestellter::Angestellter()
 {
-
+  funktion = "Schreibkraft";
 }
 
-Angestellter::Angestellter(Person die_person, Email_Adresse die_email_adressen, Telefonnummer die_dienstliche_telefonnummer, Telefonnummer die_dienstliche_faxnummer, string das_gebaeude_des_dienstzimmers, int die_raumnummer_des_dienstzimmers)
-             :Person(die_person), email_adressen(die_email_adressen), dienstliche_telefonnummer(die_dienstliche_telefonnummer), dienstliche_faxnummer(die_dienstliche_faxnummer), gebaeude_dienstzimmer(das_gebaeude_des_dienstzimmers), raumnummer_dienstzimmer(die_raumnummer_des_dienstzimmers)
+Angestellter::Angestellter(Person die_person, string die_funktion, Email_Adresse die_email_adressen, Telefonnummer die_dienstliche_telefonnummer, Telefonnummer die_dienstliche_faxnummer, string das_gebaeude_des_dienstzimmers, int die_raumnummer_des_dienstzimmers)
+             :Person(die_person), funktion(die_funktion), email_adressen(die_email_adressen), dienstliche_telefonnummer(die_dienstliche_telefonnummer), dienstliche_faxnummer(die_dienstliche_faxnummer), gebaeude_dienstzimmer(das_gebaeude_des_dienstzimmers), raumnummer_dienstzimmer(die_raumnummer_des_dienstzimmers)
 {
 
 }
 
-Angestellter::Angestellter(Person die_person, Email_Adresse die_email_adressen, Telefonnummer die_dienstliche_telefonnummer, Telefonnummer die_dienstliche_faxnummer)
-             :Person(die_person), email_adressen(die_email_adressen), dienstliche_telefonnummer(die_dienstliche_telefonnummer), dienstliche_faxnummer(die_dienstliche_faxnummer)
+Angestellter::Angestellter(Person die_person, string die_funktion, Email_Adresse die_email_adressen, Telefonnummer die_dienstliche_telefonnummer, Telefonnummer die_dienstliche_faxnummer)
+             :Person(die_person), funktion(die_funktion), email_adressen(die_email_adressen), dienstliche_telefonnummer(die_dienstliche_telefonnummer), dienstliche_faxnummer(die_dienstliche_faxnummer)
 {
 
 }
 
-Angestellter::Angestellter(Person die_person, Email_Adresse die_email_adressen, Telefonnummer die_dienstliche_telefonnummer)
-             :Person(die_person), email_adressen(die_email_adressen), dienstliche_telefonnummer(die_dienstliche_telefonnummer)
+Angestellter::Angestellter(Person die_person, string die_funktion, Email_Adresse die_email_adressen, Telefonnummer die_dienstliche_telefonnummer)
+             :Person(die_person), funktion(die_funktion), email_adressen(die_email_adressen), dienstliche_telefonnummer(die_dienstliche_telefonnummer)
 {
 
 }
 
-Angestellter::Angestellter(Person die_person, Email_Adresse die_email_adressen)
-             :Person(die_person), email_adressen(die_email_adressen)
+Angestellter::Angestellter(Person die_person, string die_funktion, Email_Adresse die_email_adressen)
+             :Person(die_person), funktion(die_funktion), email_adressen(die_email_adressen)
+{
+
+}
+
+Angestellter::Angestellter(Person die_person, string die_funktion)
+             :Person(die_person), funktion(die_funktion)
 {
 
 }
@@ -37,7 +43,7 @@ Angestellter::Angestellter(Person die_person, Email_Adresse die_email_adressen)
 Angestellter::Angestellter(Person die_person)
              :Person(die_person)
 {
-
+  funktion = "Schreibkraft";
 }
 
 Angestellter::~Angestellter()

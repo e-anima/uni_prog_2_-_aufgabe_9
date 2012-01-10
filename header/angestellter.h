@@ -14,6 +14,7 @@
 class Angestellter : public Person
 {
   private:
+    string funktion;
     Email_Adresse email_adressen;
     Telefonnummer dienstliche_telefonnummer;
     Telefonnummer dienstliche_faxnummer;
@@ -22,10 +23,11 @@ class Angestellter : public Person
 
   public:
     Angestellter();
-    Angestellter(Person die_person, Email_Adresse die_email_adressen, Telefonnummer die_dienstliche_telefonnummer, Telefonnummer die_dienstliche_faxnummer, string das_gebaeude_des_dienstzimmers, int die_raumnummer_des_dienstzimmers);
-    Angestellter(Person die_person, Email_Adresse die_email_adressen, Telefonnummer die_dienstliche_telefonnummer, Telefonnummer die_dienstliche_faxnummer);
-    Angestellter(Person die_person, Email_Adresse die_email_adressen, Telefonnummer die_dienstliche_telefonnummer);
-    Angestellter(Person die_person, Email_Adresse die_email_adressen);
+    Angestellter(Person die_person, string die_funktion, Email_Adresse die_email_adressen, Telefonnummer die_dienstliche_telefonnummer, Telefonnummer die_dienstliche_faxnummer, string das_gebaeude_des_dienstzimmers, int die_raumnummer_des_dienstzimmers);
+    Angestellter(Person die_person, string die_funktion, Email_Adresse die_email_adressen, Telefonnummer die_dienstliche_telefonnummer, Telefonnummer die_dienstliche_faxnummer);
+    Angestellter(Person die_person, string die_funktion, Email_Adresse die_email_adressen, Telefonnummer die_dienstliche_telefonnummer);
+    Angestellter(Person die_person, string die_funktion, Email_Adresse die_email_adressen);
+    Angestellter(Person die_person, string die_funktion);
     Angestellter(Person die_person);
 
     virtual ~Angestellter();

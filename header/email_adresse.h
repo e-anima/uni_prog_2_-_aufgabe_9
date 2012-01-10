@@ -22,8 +22,9 @@ class Email_Adresse
 
   public:
     Email_Adresse();
-    Email_Adresse(string* die_email_adressen, int die_anzahl_email_adressen);
-    Email_Adresse(string die_email_adresse);
+    Email_Adresse(const string* die_email_adressen, const int die_anzahl_email_adressen);
+    Email_Adresse(const string die_email_adresse);
+    Email_Adresse(const Email_Adresse& die_email_adresse);
 
     virtual ~Email_Adresse();
 
@@ -34,6 +35,15 @@ class Email_Adresse
 
     string liefere_email_adressen() const;
     string liefere_email_adresse_ueber_index(int index) const;
+    int liefere_anzahl_der_email_adressen() const;
+
+    bool operator==(const Email_Adresse& die_email_adresse);
+    bool operator!=(const Email_Adresse& die_email_adresse);
+    bool operator<(const Email_Adresse& die_email_adresse);
+    bool operator<=(const Email_Adresse& die_email_adresse);
+    bool operator>(const Email_Adresse& die_email_adresse);
+    bool operator>=(const Email_Adresse& die_email_adresse);
+    Email_Adresse& operator=(const Email_Adresse& original);
 
   private:
     bool addrese_bereits_enthalten(string zu_suchende_adresse) const;

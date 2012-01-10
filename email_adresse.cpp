@@ -5,6 +5,11 @@
 
 #include "header/email_adresse.h"
 
+/**
+ * Der Default Konstruktor.
+ * Setzt eine Email Adresse.
+ * Diese lautet student@uni.de.
+ */
 Email_Adresse::Email_Adresse()
 {
   anzahl_email_adressen = 1;
@@ -12,24 +17,67 @@ Email_Adresse::Email_Adresse()
   email_adressen[0]     = "student@uni.de";
 }
 
-Email_Adresse::Email_Adresse(string* die_email_adressen, int die_anzahl_email_adressen)
+/**
+ * Der Konstruktor der Klasse.
+ * Setzt mehrere Email Adressen.
+ *
+ * @param  die_email_adressen         Die Email Adressen, welche gesetzt werden sollen.
+ * @param  die_anzahl_email_adressen  Die Anzahl der Email Adressen, welche gesetzt werden sollen.
+ */
+Email_Adresse::Email_Adresse(const string* die_email_adressen, const int die_anzahl_email_adressen)
 {
   anzahl_email_adressen = die_anzahl_email_adressen;
-  email_adressen        = die_email_adressen;
+  email_adressen        = new string[anzahl_email_adressen];
+  for (int index = 0; index < anzahl_email_adressen; ++index)
+  {
+    email_adressen[index] = die_email_adressen[index];
+  }
 }
 
-Email_Adresse::Email_Adresse(string die_email_adresse)
+/**
+ * Der Konstruktor der Klasse.
+ * Setzt eine Email Adresse.
+ *
+ * @param  die_email_adresse  Die Email Adresse die gesetzt werden soll.
+ */
+Email_Adresse::Email_Adresse(const string die_email_adresse)
 {
   anzahl_email_adressen = 1;
   email_adressen        = new string[anzahl_email_adressen];
   email_adressen[0]     = die_email_adresse;
 }
 
+/**
+ * Der Copy Contructor der Klasse.
+ * Kopiert eine bestehende Email Adresse.
+ *
+ * @param  original  Die originale Email Adressen, welche kopiert werden sollen.
+ */
+Email_Adresse::Email_Adresse(const Email_Adresse& die_email_adresse)
+{
+  anzahl_email_adressen = die_email_adresse.liefere_anzahl_der_email_adressen();
+  email_adressen        = new string[anzahl_email_adressen];
+  for (int index = 0; index < anzahl_email_adressen; ++index)
+  {
+    email_adressen[index] = die_email_adresse.liefere_email_adresse_ueber_index(index);
+  }
+}
+
+/**
+ * Der Destruktor der Klasse.
+ * Zerstoert das Objekt.
+ * Gibt den Speicher der Email Adressen frei.
+ */
 Email_Adresse::~Email_Adresse()
 {
   delete [] email_adressen;
 }
 
+/**
+ * Fuegt eine Email Adresse zur Liste hinzu.
+ *
+ * @param  die_neue_email_adresse  Die Email Adresse, welche zur Liste hinzugefuegt werden soll.
+ */
 void Email_Adresse::fuege_email_adresse_hinzu(string die_neue_email_adresse)
 {
   if (!addrese_bereits_enthalten(die_neue_email_adresse))
@@ -47,6 +95,12 @@ void Email_Adresse::fuege_email_adresse_hinzu(string die_neue_email_adresse)
   }
 }
 
+/**
+ * Fuegt mehrere Email Adresse zur Liste hinzu.
+ *
+ * @param  die_neuen_email_adressen     Die Email Adressen, welche zur Liste hinzugefuegt werden sollen.
+ * @param  anzahl_neuer_email_adressen  Die Anzahl der Email Adressen, welche hinzugefuegt werden sollen.
+ */
 void Email_Adresse::fuege_email_adresse_hinzu(string* die_neuen_email_adressen, int anzahl_neuer_email_adressen)
 {
   if (anzahl_email_adressen > 0)
@@ -58,6 +112,13 @@ void Email_Adresse::fuege_email_adresse_hinzu(string* die_neuen_email_adressen, 
   }
 }
 
+/**
+ * Entfernt eine Email Adresse aus der Liste anhand dem Index aus der Liste.
+ *
+ * @param  der_index  Der Index der Email Adresse in der Liste, welche entfernt werden soll.
+ *
+ * @return            Ein true, wenn die Adresse erfolgreich entfernt wurde, bzw. ein false, wenn sie nicht entfernt werden konnte.
+ */
 bool Email_Adresse::entferne_email_adresse(int der_index)
 {
   int index;
@@ -89,6 +150,13 @@ bool Email_Adresse::entferne_email_adresse(int der_index)
   return wurde_entfernt;
 }
 
+/**
+ * Entfernt eine Email Adresse aus der Liste.
+ *
+ * @param  die_email_adresse  Die Email Adresse, welche aus der Liste entfernt werden soll.
+ *
+ * @return                    Ein true, wenn die Adresse erfolgreich entfernt wurde, bzw. ein false, wenn sie nicht entfernt werden konnte.
+ */
 bool Email_Adresse::entferne_email_adresse(string die_email_adresse)
 {
   bool wurde_entfernt = false;
@@ -114,6 +182,11 @@ bool Email_Adresse::entferne_email_adresse(string die_email_adresse)
   return wurde_entfernt;
 }
 
+/**
+ * Gibt alle Email Adressen aus der Liste, Kommasepariert aus.
+ *
+ * @return  Alle Email Adressen aus der Liste, mit Komma separiert.
+ */
 string Email_Adresse::liefere_email_adressen() const
 {
   stringstream ausgabe(stringstream::out);
@@ -128,20 +201,160 @@ string Email_Adresse::liefere_email_adressen() const
   return ausgabe.str();
 }
 
-string Email_Adresse::liefere_email_adresse_ueber_index(int index) const
+/**
+ * Gibt eine Email Adresse, anhand des Index in der Liste, aus
+ *
+ * @param  der_index  Der Index der Email Adresse aus der Liste.
+ *
+ * @return            Die Email Adresse aus der Liste.
+ */
+string Email_Adresse::liefere_email_adresse_ueber_index(int der_index) const
 {
-  int der_index;
-  if (index < 0)
+  int der_index_der_email_adresse;
+  if (der_index < 0)
   {
-    der_index = 0;
+    der_index_der_email_adresse = 0;
   }
-  else if (index > anzahl_email_adressen)
+  else if (der_index > anzahl_email_adressen)
   {
-    der_index = anzahl_email_adressen;
+    der_index_der_email_adresse = anzahl_email_adressen;
   }
-  return email_adressen[der_index];
+  return email_adressen[der_index_der_email_adresse];
 }
 
+/**
+ * Gibt die Anzahl der Email Adressen zurueck.
+ *
+ * @return  Die Anzahl der Email Adressen.
+ */
+int Email_Adresse::liefere_anzahl_der_email_adressen() const
+{
+  return anzahl_email_adressen;
+}
+
+/**
+ * Ueberlaedt den == Operator.
+ * Prueft ob zwei Email Adressen gleich sind.
+ * Die Adressen sind gleich, wenn sowohl die Anzahl der Email Adressen, als auch die Email Adresse selber, gleich sind.
+ *
+ * @param  die_email_adresse  Die Email Adressen, mit dem der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                    Ein true, wenn die Adressen gleich sind, bzw. ein false, wenn sie ungleich sein sollten.
+ */
+bool Email_Adresse::operator==(const Email_Adresse& die_email_adresse)
+{
+  return (liefere_anzahl_der_email_adressen() == die_email_adresse.liefere_anzahl_der_email_adressen() &&
+          liefere_email_adressen()            == die_email_adresse.liefere_email_adressen());
+}
+
+/**
+ * Ueberlaedt den != Operator.
+ * Prueft ob zwei Email Adressen ungleich sind.
+ * Die Adressen sind ungleich, wenn entweder die Anzahl der Email Adressen oder die Email Adresse selber, ungleich sind.
+ *
+ * @param  die_email_adresse  Die Email Adressen, mit dem der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                    Ein true, wenn die Adressen ungleich sind, bzw. ein false, wenn sie gleich sein sollten.
+ */
+bool Email_Adresse::operator!=(const Email_Adresse& die_email_adresse)
+{
+  return !(*this == die_email_adresse);
+}
+
+/**
+ * Ueberlaedt den < Operator.
+ * Prueft ob ein Email Adresse kleiner als die andere ist.
+ * Kleiner bedeutet in diesem zusammenhang frueher im Alphabet.
+ * Ein B ist kleiner als ein C.
+ * Die Adresse gilt als kleiner wenn der Reihe nach, eine der Email Adressen kleiner ist,
+ * als die entsprechende in den zu vergleichenden Email Adressen.
+ *
+ * @param  die_email_adresse  Die Email Adressen, mit dem der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                    Ein true, wenn die Adresse kleiner ist, bzw. ein false, wenn sie groesser sein sollte.
+ */
+bool Email_Adresse::operator<(const Email_Adresse& die_email_adresse)
+{
+  return liefere_email_adressen() < die_email_adresse.liefere_email_adressen();
+}
+
+/**
+ * Ueberlaedt den <= Operator.
+ * Prueft ob ein Email Adresse kleiner oder gleich einer andere ist.
+ * Kleiner bedeutet in diesem zusammenhang frueher im Alphabet.
+ * Ein B ist kleiner als ein C.
+ * Die Adresse gilt als kleiner wenn der Reihe nach, eine der Email Adressen kleiner ist,
+ * als die entsprechende in den zu vergleichenden Email Adressen.
+ * Die Adressen sind gleich, wenn sowohl die Anzahl der Email Adressen, als auch die Email Adresse selber, gleich sind.
+ *
+ * @param  die_email_adresse  Die Email Adressen, mit dem der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                    Ein true, wenn die Adresse kleiner oder gleich ist, bzw. ein false, wenn sie groesser sein sollte.
+ */
+bool Email_Adresse::operator<=(const Email_Adresse& die_email_adresse)
+{
+  return (*this < die_email_adresse || *this == die_email_adresse);
+}
+
+/**
+ * Ueberlaedt den > Operator.
+ * Prueft ob ein Email Adresse groesser als die andere ist.
+ * Groesser bedeutet in diesem zusammenhang spaeter im Alphabet.
+ * Ein C ist groesser als ein B.
+ * Die Adresse gilt als groesser wenn der Reihe nach, eine der Email Adressen groesser ist,
+ * als die entsprechende in den zu vergleichenden Email Adressen.
+ *
+ * @param  die_email_adresse  Die Email Adressen, mit dem der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                    Ein true, wenn die Adresse groesser ist, bzw. ein false, wenn sie kleiner sein sollte.
+ */
+bool Email_Adresse::operator>(const Email_Adresse& die_email_adresse)
+{
+  return liefere_email_adressen() > die_email_adresse.liefere_email_adressen();
+}
+
+/**
+ * Ueberlaedt den >= Operator.
+ * Prueft ob ein Email Adresse groesser als die andere ist.
+ * Groesser bedeutet in diesem zusammenhang spaeter im Alphabet.
+ * Ein C ist groesser als ein B.
+ * Die Adresse gilt als groesser wenn der Reihe nach, eine der Email Adressen groesser ist,
+ * als die entsprechende in den zu vergleichenden Email Adressen.
+ * Die Adressen sind gleich, wenn sowohl die Anzahl der Email Adressen, als auch die Email Adresse selber, gleich sind.
+ *
+ * @param  die_email_adresse  Die Email Adressen, mit dem der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                    Ein true, wenn die Adresse groesser oder gleich ist, bzw. ein false, wenn sie kleiner sein sollte.
+ */
+bool Email_Adresse::operator>=(const Email_Adresse& die_email_adresse)
+{
+  return (*this > die_email_adresse || *this == die_email_adresse);
+}
+
+/**
+ * Ueberlaedt den = Operator.
+ * Erzeugt eine Kopie der Email Adressen.
+ *
+ * @param  original  Die originalen Email Adressen, welche kopiert werden sollen.
+ */
+Email_Adresse& Email_Adresse::operator=(const Email_Adresse& original)
+{
+  anzahl_email_adressen = original.liefere_anzahl_der_email_adressen();
+  email_adressen        = new string[anzahl_email_adressen];
+  for (int index = 0; index < anzahl_email_adressen; ++index)
+  {
+    email_adressen[index] = original.liefere_email_adresse_ueber_index(index);
+  }
+  return *this;
+}
+
+/**
+ * Prueft ob die Email Adresse bereits in der Liste enthalten ist oder nicht.
+ *
+ * @param  zu_suchende_adresse  Die Adresse, welche in der Liste gesucht werden soll.
+ *
+ * @return                      Ein true, wenn die Email Adresse bereits in der Liste enthalten ist, bzw. ein false, wenn sie nicht enthalten ist.
+ */
 bool Email_Adresse::addrese_bereits_enthalten(string zu_suchende_adresse) const
 {
   bool ist_enthalten = false;

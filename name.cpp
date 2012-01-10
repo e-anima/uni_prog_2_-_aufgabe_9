@@ -282,7 +282,7 @@ bool Name::operator!=(const Name& der_name)
  * Ueberlaedt den < Operator.
  * Prueft ob ein Name kleiner als die andere ist.
  * Kleiner bedeutet in diesem zusammenhang frueher im Alphabet.
- * Ein B ist als kleiner als ein C.
+ * Ein B ist kleiner als ein C.
  * Der Name gilt als kleiner wenn entweder der Nachname kleiner ist
  * oder wenn die Nachnamen gleich, aber der Vorname kleiner ist.
  *
