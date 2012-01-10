@@ -25,15 +25,16 @@ class Professor : public Angestellter
 
   public:
     Professor();
-    Professor(string der_fachbereich, string der_studiengang, Sprechstunde die_sprechstunde);
-    Professor(string der_fachbereich, string der_studiengang);
-    Professor(string der_fachbereich);
+    Professor(Angestellter der_angestellte, string der_fachbereich, string der_studiengang, Sprechstunde die_sprechstunde);
+    Professor(Angestellter der_angestellte, string der_fachbereich, string der_studiengang);
+    Professor(Angestellter der_angestellte, string der_fachbereich);
+    Professor(Angestellter der_angestellte);
 
     virtual ~Professor();
 
     void setze_fachbereich(string der_fachbereich);
     void setze_studiengang(string der_studiengang);
-    void setze_sprechstunde_wochentag(Sprechstunde die_sprechstunde);
+    void setze_sprechstunde(Sprechstunde die_sprechstunde);
 
     string liefere_fachbereich() const;
     string liefere_studiengang() const;

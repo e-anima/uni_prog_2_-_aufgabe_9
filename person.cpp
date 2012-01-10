@@ -271,7 +271,7 @@ string Person::liefere_beschreibung() const
  * Gibt eine Person, mit allen Daten, in den Outputstream.
  *
  * @param  ausgabe  Der Outputstream.
- * @param  name     Die Person, welcher in den Outputstream gegeben werden soll.
+ * @param  person   Die Person, welcher in den Outputstream gegeben werden soll.
  *
  * @return          Der Outputstream.
  */

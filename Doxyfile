@@ -2,7 +2,7 @@
 OUTPUT_DIRECTORY	= doc
 
 # Basis für die Dokumentation ist das aktuelle Verzeichnis.
-INPUT			= .
+INPUT			= . ./header
 
 # Alle in Frage kommenden Dateien werden untersucht.
 EXTRACT_ALL		= YES

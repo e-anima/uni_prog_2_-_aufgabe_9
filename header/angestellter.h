@@ -1,5 +1,4 @@
 /**
- *
  *  @author Markus Paeschke (s0531524)
  */
 
@@ -14,11 +13,17 @@
 class Angestellter : public Person
 {
   private:
+    /** Die Funktion des Angestellten in der Uni. **/
     string funktion;
+    /** Die Email Adressen des Angestellten. **/
     Email_Adresse email_adressen;
+    /** Die Telefonnumer des Angestellten. **/
     Telefonnummer dienstliche_telefonnummer;
+    /** Die Faxnummer des Angestellten. **/
     Telefonnummer dienstliche_faxnummer;
+    /** Das Gebaeude in dem sich das Dienstzimmer des Angestellten befindet. **/
     string gebaeude_dienstzimmer;
+    /** Die Raumnummer des Dienstzimmers. **/
     int raumnummer_dienstzimmer;
 
   public:
