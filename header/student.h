@@ -11,6 +11,7 @@
 #include "array_helfer.h"
 #include "beschreibbar.h"
 #include "datum.h"
+#include "email_adresse.h"
 #include "person.h"
 
 using namespace std;
@@ -24,12 +25,11 @@ class Student : public Person
     int matrikelnummer;
     string fachbereich;
     string studiengang;
-    string* email_adressen;
-    int anzahl_email_adressen;
+    Email_Adresse email_adressen;
 
   public:
     Student();
-    Student(Person die_person, Adresse die_heimatanschrift, Datum das_datum_der_immatrikulation, int die_matrikelnummer, string der_fachbereich, string der_studiengang, string* die_email_adressen, int die_anzahl_email_adressen);
+    Student(Person die_person, Adresse die_heimatanschrift, Datum das_datum_der_immatrikulation, int die_matrikelnummer, string der_fachbereich, string der_studiengang, Email_Adresse die_email_adressen);
     Student(Person die_person, Adresse die_heimatanschrift, Datum das_datum_der_immatrikulation, int die_matrikelnummer, string der_fachbereich, string der_studiengang);
     Student(Person die_person, Adresse die_heimatanschrift, Datum das_datum_der_immatrikulation, int die_matrikelnummer, string der_fachbereich);
     Student(Person die_person, Adresse die_heimatanschrift, Datum das_datum_der_immatrikulation, int die_matrikelnummer);
@@ -45,6 +45,7 @@ class Student : public Person
     void setze_fachbereich(string der_fachbereich);
     void setze_studiengang(string der_studiengang);
     void fuege_email_adresse_hinzu(string die_email_adresse);
+    void fuege_email_adresse_hinzu(string* die_neuen_email_adressen, int anzahl_neuer_email_adressen);
     bool entferne_email_adresse(int der_index);
     bool entferne_email_adresse(string die_email_adresse);
 
@@ -53,7 +54,7 @@ class Student : public Person
     int liefere_matrikelnummer() const;
     string liefere_fachbereich() const;
     string liefere_studiengang() const;
-    string liefere_email_adressen() const;
+    Email_Adresse liefere_email_adressen() const;
     string liefere_email_adresse_ueber_index(int index) const;
 
     virtual string liefere_beschreibung() const;

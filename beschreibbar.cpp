@@ -22,7 +22,7 @@ Beschreibbar::~Beschreibbar()
  *
  * @return  Die Beschreiung eines Objekts als Text.
  */
-string Beschreibbar::liefere_beschreibung()
+string Beschreibbar::liefere_beschreibung() const
 {
   return "";
 }

@@ -25,8 +25,10 @@ cpp_dateien     = [                         # hier C++-Dateien einfuegen
   'angestellter.cpp',
   'array_helfer.cpp',
   'ausgabe.cpp',
+  'beschreibbar.cpp',
   'datum.cpp',
   'eingabe.cpp',
+  'email_adresse.cpp',
   'helfer.cpp',
   'laboringenieur.cpp',
   'main.cpp',
@@ -39,6 +41,7 @@ cpp_dateien     = [                         # hier C++-Dateien einfuegen
   'schreibkraft.cpp',
   'sortierbar.cpp',
   'student.cpp',
+  'telefonnummer.cpp',
   'verwaltungskraft.cpp',
   'zeit.cpp',
   'zufallsgenerierung.cpp'
