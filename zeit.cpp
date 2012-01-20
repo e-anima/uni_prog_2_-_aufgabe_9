@@ -24,7 +24,7 @@ Zeit::Zeit()
  * So wuerde aus 25:00:00 gleich 01:00:00 werden.
  *
  * @param  die_stunden   Die Stunden der Zeit.
- * @parma  die_minuten   Die Minuten der Zeit.
+ * @param  die_minuten   Die Minuten der Zeit.
  * @param  die_sekunden  Die Sekunden der Zeit.
  */
 Zeit::Zeit(int die_stunden, int die_minuten, int die_sekunden)
@@ -39,7 +39,7 @@ Zeit::Zeit(int die_stunden, int die_minuten, int die_sekunden)
  * So wuerde aus 25:00 gleich 01:00 werden.
  *
  * @param  die_stunden  Die Stunden der Zeit.
- * @parma  die_minuten  Die Minuten der Zeit.
+ * @param  die_minuten  Die Minuten der Zeit.
  */
 Zeit::Zeit(int die_stunden, int die_minuten)
 {

@@ -1,0 +1,38 @@
+Angewandte Informatik
+Finanzdienstleistungen - Risikomanagement
+Frauenstudiengang Informatik und Wirtschaft
+Game Design
+Internationaler Studiengang Medieninformatik
+Wirtschaftsinformatik
+Wirtschaftsingenieurwesen
+Wirtschaftskommunikation
+Wirtschaftsmathematik
+Arbeits- und Personalmanagement (MAP)
+Betriebswirtschaftslehre (BWL)
+Finance, Accounting, Corporate Law, Taxation
+Immobilienwirtschaft (IW)
+Industrial Sales and Innovation Management
+International Business (IB)	IB Bachelor
+Nonprofit Management und Public Governance (MaNGO)
+Öffentliches Dienstleistungsmanagement (PuMa)
+Wirtschaftsrecht (WR)
+Wirtschaft und Politik
+Bauingenieurwesen (BI)
+Betriebliche Umweltinformatik (BUI)
+Umweltinformatik (UI)
+Construction and Real Estate Management (ConREM)
+Facility Management (FM)
+Fahrzeugtechnik (FZT)
+Ingenieurinformatik (II)
+Life Science Engineering (LSE)
+Maschinenbau (MB)
+Angewandte Automation (AA)
+Computer Engineering (CE)
+Elektrotechnik (ET)
+Gebäudeenergie- und -informationstechnik (GEIT)
+Informationstechnik/Vernetzte Systeme (ITVS)
+Informations- und Kommunikationstechnik (IKT)
+Mikrosystemtechnik (MST)
+Nachrichtentechnik (NT)
+Systems Engineering (SE)
+Umwelttechnik/Regenerative Energien (UTRE)

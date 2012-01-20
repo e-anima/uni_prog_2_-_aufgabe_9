@@ -10,12 +10,12 @@ using namespace std;
 
 #include <vector>
 #include "ausgabe.h"
+#include "datei_handler.h"
 #include "eingabe.h"
 #include "menue.h"
+#include "uni_verwaltung.h"
 
-vector<string> erzeuge_menue();
-bool pruefe_argumente(int argc, char* argv[]);
-void schreibe_hilfe();
+int erzeuge_menue();
 void programmstart();
 void programmende();
 

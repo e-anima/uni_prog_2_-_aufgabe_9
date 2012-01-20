@@ -1,62 +1,65 @@
 #include "header/main.h"
 
 /**
-  *  - HTW Verwaltung -
+  *  - Uni Verwaltung -
   *
   *  @author Markus Paeschke (531524)
   *  @version 1.0
   */
-int main(int argc, char **argv)
+int main()
 {
-  if (pruefe_argumente(argc, argv))
+  programmstart();
+  cout << endl;
+  int menue_wahl;
+  Uni_Verwaltung liste = Uni_Verwaltung();
+  Datei_Handler datei = Datei_Handler("files/namen.txt");
+  do
   {
-    programmstart();
-    cout << endl;
     schreibe(80, '-');
+    menue_wahl = erzeuge_menue();
+    switch (menue_wahl)
+    {
+      case 1:
+        liste = Uni_Verwaltung(erfasse_int("Wieviele Personen sollen generiert werden?", 1, 1000));
+        break;
+      case 2:
+        cout << endl << liste << endl;
+        break;
+      case 3:
+        cout << endl << datei.liefere_anzahl_zeilen() << endl;
+        cout << endl << datei.liefere_zeile(23) << endl;
+        break;
+      case 4:
+        break;
+      case 5:
+        break;
+    }
+  } while (menue_wahl != 11);
     programmende();
-  }
   return 0;
 }
 
-/**
-  * Prueft die beim Programmstart uebergebenen Parameter auf Richtigkeit.
-  * Bei Fehleingaben wird der Benutzer darauf hingewiesen, indem eine Hilfe auf dem Bildschirm ausgegeben wird.
-  *
-  * @param  argc       Die Anzahl der Parameter die uebergeben werden.
-  * @param  argv       Die Parameter die uebergebn wurden.
-  *
-  * @return            Ein boolscher Wert, ob die pruefung erfolgreich war (true) oder ob ein Fehler aufgetreten ist (false);
-  */
-bool pruefe_argumente(int argc, char* argv[])
+int erzeuge_menue()
 {
-  bool ist_gueltig = false;
-  if (argc == 1)
-  {
-    ist_gueltig = true;
-  }
-  if (!ist_gueltig)
-  {
-    cout << argv[0];
-    schreibe_hilfe();
-  }
-  return ist_gueltig;
-}
-
-/** Gibt die Hilfe fuer das Programm auf dem Bildschirm aus. */
-void schreibe_hilfe()
-{
-  cout << endl << "Fehler, bitte folgendermassen benutzen:" << endl
-       << "magisches_quadrat <Ordnung des Quadrats>" << endl << endl
-       << "<Ordnung des Quadrats>" << endl
-       << "\tDie Kantenlaenge des Quadrats." << endl
-       << "\tDiese muss >= 1 und ungerade sein." << endl
-       << "\tWird beispielsweise eine 5 eingegeben, wird ein magisches Quadrat mit 5 x 5 Feldern erzeugt." << endl << endl;
+  vector<string> menue;
+  menue.push_back("erzeuge n zufaellige Personen");
+  menue.push_back("Personen unsortiert ausgeben");
+  menue.push_back("Personen sortiert nach Nachname -> Vorname -> Geburtsdatum");
+  menue.push_back("Personen sortiert nach Geburtsdatum -> Nachname -> Vorname");
+  menue.push_back("Personen sortiert nach Jahrgang -> Nachname -> Vorname");
+  menue.push_back("erzeuge n zufaellige Studenten");
+  menue.push_back("Studenten unsortiert ausgeben");
+  menue.push_back("Studenten sortiert nach Matrikelnummer");
+  menue.push_back("Studenten sortiert nach Fachbereich -> Matrikelnummer");
+  menue.push_back("Studenten sortiert nach Fachbereich -> Nachname -> Vorname");
+  menue.push_back("Beenden");
+  return schreibe_menue(menue);
 }
 
 /** Gibt den Begruessungstext, beim Starten des Programms, auf dem Bildschirm aus. */
 void programmstart()
 {
-  cout << endl << endl << "- HTW Verwaltung -" << endl << endl;
+  cout << endl << endl << "- Uni Verwaltung -" << endl << endl;
 }
 
 /** Gibt den Text, beim Beenden des Programms, auf dem Bildschirm aus. */

@@ -26,6 +26,7 @@ cpp_dateien     = [                         # hier C++-Dateien einfuegen
   'array_helfer.cpp',
   'ausgabe.cpp',
   'beschreibbar.cpp',
+  'datei_handler.cpp',
   'datum.cpp',
   'eingabe.cpp',
   'email_adresse.cpp',
@@ -37,12 +38,12 @@ cpp_dateien     = [                         # hier C++-Dateien einfuegen
   'ort.cpp',
   'person.cpp',
   'professor.cpp',
-  'sortierbar.cpp',
   'sprechstunde.cpp',
   'student.cpp',
   'telefonnummer.cpp',
+  'uni_verwaltung.cpp',
   'zeit.cpp',
   'zufallsgenerierung.cpp'
 ]
-programm_name = 'htw_verwaltung'             # hier Programmnamen festlegen
+programm_name = 'uni_verwaltung'             # hier Programmnamen festlegen
 std.Program(programm_name, cpp_dateien)    # Programm bauen

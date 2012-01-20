@@ -28,7 +28,7 @@ Datum::Datum()
  * Falls das Datum ungueltig ist, wird das aktuelle Datum gesetzt.
  *
  * @param  der_tag    Der Tag des Datums.
- * @parma  der_monat  Der Monat des Datums.
+ * @param  der_monat  Der Monat des Datums.
  * @param  das_jahr   Das Jahr des Datums.
  */
 Datum::Datum(int der_tag, int der_monat, int das_jahr)

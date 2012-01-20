@@ -9,7 +9,7 @@
  * Initialisiert alle Elemente eines Arrays mit dem entsprechenden Wert.
  *
  * @param  zu_initialisierendes_array  Das Array, welches gefuellt werden soll.
- * @parma  laenge                      Die Laenge des zu initialisierenden Arrays.
+ * @param  laenge                      Die Laenge des zu initialisierenden Arrays.
  * @param  wert                        Der Wert, mit dem alle Arrayelemente gefuellt werden sollen.
  */
 void initialisieren_array(int* zu_initialisierendes_array, int laenge, int wert)
@@ -24,7 +24,7 @@ void initialisieren_array(int* zu_initialisierendes_array, int laenge, int wert)
  * Initialisiert alle Elemente eines Arrays mit 0.
  *
  * @param  zu_initialisierendes_array  Das Array, welches gefuellt werden soll.
- * @parma  laenge                      Die Laenge des zu initialisierenden Arrays.
+ * @param  laenge                      Die Laenge des zu initialisierenden Arrays.
  */
 void initialisieren_array(int* zu_initialisierendes_array, int laenge)
 {
