@@ -23,7 +23,6 @@ std = Environment(
 cpp_dateien     = [                         # hier C++-Dateien einfuegen
   'adresse.cpp',
   'angestellter.cpp',
-  'ausgabe.cpp',
   'beschreibbar.cpp',
   'datei_handler.cpp',
   'datum.cpp',

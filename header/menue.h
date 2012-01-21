@@ -26,7 +26,7 @@ template <typename T> int schreibe_menue(T menue[], int menue_laenge)
     cout << endl << "(" << (i + 1) << ")\t" << menue[i];
   }
   cout << endl << endl;
-  return erfasse_zahl<int>("Ihre Wahl:\t", 1, menue_laenge);
+  return erfasse_zahl<int>("Ihre Wahl", 1, menue_laenge);
 }
 
 /** Schreibt ein Menue auf den Bildschirm, welches eine nummerische Auswahl und einen Text enthaelt.
@@ -41,7 +41,7 @@ template <typename T> int schreibe_menue(vector<T> menue)
     cout << endl << "(" << (i + 1) << ")\t" << menue.at(i);
   }
   cout << endl << endl;
-  return erfasse_zahl<int>("Ihre Wahl:\t", 1, menue.size());
+  return erfasse_zahl<int>("Ihre Wahl", 1, menue.size());
 }
 
 /** Schreibt ein Menue auf den Bildschirm, welches eine nummerische Auswahl und einen Text enthaelt.
@@ -57,7 +57,7 @@ template <typename T> int schreibe_menue(vector<T> menue, string eingabeaufforde
     cout << endl << "(" << (i + 1) << ")\t" << menue.at(i);
   }
   cout << endl << endl;
-  return erfasse_zahl<int>("Ihre Wahl:\t", 1, menue.size());
+  return erfasse_zahl<int>("Ihre Wahl", 1, menue.size());
 }
 
 #endif

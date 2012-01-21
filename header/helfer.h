@@ -14,7 +14,7 @@
 
 using namespace std;
 
-void setze_schalter(ios_base::fmtflags format);
+void setze_schalter(ios_base::fmtflags format, std::ostream& ausgabe);
 
 /**
  * Prueft ob eine Zahl eine gerade ist oder nicht.

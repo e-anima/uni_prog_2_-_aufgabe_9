@@ -15,7 +15,7 @@ int main()
   Datei_Handler datei = Datei_Handler("files/namen.txt");
   do
   {
-    schreibe(80, '-');
+    schreibe_n_mal('-', 80);
     menue_wahl = erzeuge_menue();
     switch (menue_wahl)
     {
@@ -32,6 +32,16 @@ int main()
       case 4:
         break;
       case 5:
+        break;
+      case 6:
+        break;
+      case 7:
+        break;
+      case 8:
+        break;
+      case 9:
+        break;
+      case 10:
         break;
     }
   } while (menue_wahl != 11);

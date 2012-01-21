@@ -10,25 +10,25 @@
  *
  * @param format  Der Schalter, welche gesetzt werden soll.
  */
-void setze_schalter(ios_base::fmtflags format)
+void setze_schalter(ios_base::fmtflags format, std::ostream& ausgabe = std::cout)
 {
-  if (format == cout.dec || format == cout.oct || format == cout.hex)
+  if (format == ausgabe.dec || format == ausgabe.oct || format == ausgabe.hex)
   {
-    cout.setf(format, ios_base::basefield);
+    ausgabe.setf(format, ios_base::basefield);
   }
   else
   {
-    if (format == cout.left || format == cout.right || format == cout.internal)
+    if (format == ausgabe.left || format == ausgabe.right || format == ausgabe.internal)
     {
-      cout.setf(format, ios_base::adjustfield);
+      ausgabe.setf(format, ios_base::adjustfield);
     }
-    else if (format == cout.scientific || format == cout.fixed)
+    else if (format == ausgabe.scientific || format == ausgabe.fixed)
     {
-      cout.setf(format, ios_base::floatfield);
+      ausgabe.setf(format, ios_base::floatfield);
     }
     else
     {
-      cout.setf(format);
+      ausgabe.setf(format);
     }
   }
 }

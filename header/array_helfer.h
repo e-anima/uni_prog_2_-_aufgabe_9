@@ -51,4 +51,25 @@ template <typename T> void kopiere_array(T* zu_fuellendes_array, T* zu_kopierend
   }
 }
 
+/**
+ * Gibt eine Array auf dem Bildschirm aus.
+ *
+ * @param  ausgabe  Der Stream, in den das Array geschrieben werden soll.
+ * @param  array    Das Array, welches in den Stream gepackt werden soll.
+ * @param  laenge   Die Laenge des Arrays.
+ * @param  trenner  Der Trenner, welche am Ende eines Elements geschrieben werden soll.
+ * @param  am_ende  Boolscher Wert, ob nach dem letzten Element der Trenner ebenfalls ausgegeben werden soll oder nicht.
+ */
+template <typename T, typename Indextype> void schreibe_array(std::ostream& ausgabe, const T array[], Indextype laenge, std::string trenner = " ", bool am_ende = false)
+{
+  for (Indextype zaehler = 0; zaehler < (laenge - 1); ++zaehler)
+  {
+    ausgabe << array[zaehler] << trenner;
+  }
+  if (am_ende)
+  {
+    ausgabe << trenner;
+  }
+}
+
 #endif
