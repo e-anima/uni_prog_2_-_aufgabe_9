@@ -562,9 +562,9 @@ std::istream& operator>>(std::istream& eingabe, Datum& datum)
   Datum eingebenes_datum;
   do
   {
-    tag              = erfasse_int("Bitte den Tag eingeben", 1, 31);
-    monat            = erfasse_int("Bitte den Monat eingeben", 1, 12);
-    jahr             = erfasse_int("Bitte das Jahr eingeben", 1583, INT_MAX);
+    tag              = erfasse_zahl<int>("Bitte den Tag eingeben", 1, 31);
+    monat            = erfasse_zahl<int>("Bitte den Monat eingeben", 1, 12);
+    jahr             = erfasse_zahl<int>("Bitte das Jahr eingeben", 1583, INT_MAX);
     eingebenes_datum = Datum(tag, monat, jahr);
     if (eingebenes_datum.liefere_tag() == 1 && eingebenes_datum.liefere_monat() == 1  && eingebenes_datum.liefere_jahr() == 1583)
     {

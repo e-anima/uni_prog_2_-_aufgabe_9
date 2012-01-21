@@ -470,9 +470,9 @@ std::ostream& operator<<(std::ostream& ausgabe, const Zeit& zeit)
  */
 std::istream& operator>>(std::istream& eingabe, Zeit& zeit)
 {
-  int stunden  = erfasse_int("Bitte die Stunden eingeben", 0, 23);
-  int minuten  = erfasse_int("Bitte die Minuten eingeben", 0, 59);
-  int sekunden = erfasse_int("Bitte die Sekunden eingeben", 0, 59);
+  int stunden  = erfasse_zahl<int>("Bitte die Stunden eingeben", 0, 23);
+  int minuten  = erfasse_zahl<int>("Bitte die Minuten eingeben", 0, 59);
+  int sekunden = erfasse_zahl<int>("Bitte die Sekunden eingeben", 0, 59);
   zeit         = Zeit(stunden, minuten, sekunden);
   return eingabe;
 }

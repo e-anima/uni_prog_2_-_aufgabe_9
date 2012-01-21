@@ -328,8 +328,8 @@ std::istream& operator>>(std::istream& eingabe, Adresse& adresse)
   Ort der_ort;
   eingabe >> der_ort;
   string strasse      = erfasse_string("Bitte die Strasse eingeben", 100);
-  int hausnummer      = erfasse_int("Bitte die Hausnummer eingeben");
-  int postleitzahl    = erfasse_int("Bitte die Postleitzahl, eingeben", 10000, 99999);
+  int hausnummer      = erfasse_zahl<int>("Bitte die Hausnummer eingeben");
+  int postleitzahl    = erfasse_zahl<int>("Bitte die Postleitzahl, eingeben", 10000, 99999);
   adresse             = Adresse(der_ort, postleitzahl, strasse, hausnummer);
   return eingabe;
 }

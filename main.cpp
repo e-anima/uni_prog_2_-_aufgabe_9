@@ -20,7 +20,7 @@ int main()
     switch (menue_wahl)
     {
       case 1:
-        liste = Uni_Verwaltung(erfasse_int("Wieviele Personen sollen generiert werden?", 1, 1000));
+        liste = Uni_Verwaltung(erfasse_zahl<int>("Wieviele Personen sollen generiert werden?", 1, 1000));
         break;
       case 2:
         cout << endl << liste << endl;
@@ -53,7 +53,7 @@ int erzeuge_menue()
   menue.push_back("Studenten sortiert nach Fachbereich -> Matrikelnummer");
   menue.push_back("Studenten sortiert nach Fachbereich -> Nachname -> Vorname");
   menue.push_back("Beenden");
-  return schreibe_menue(menue);
+  return schreibe_menue<string>(menue);
 }
 
 /** Gibt den Begruessungstext, beim Starten des Programms, auf dem Bildschirm aus. */

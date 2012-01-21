@@ -23,7 +23,6 @@ std = Environment(
 cpp_dateien     = [                         # hier C++-Dateien einfuegen
   'adresse.cpp',
   'angestellter.cpp',
-  'array_helfer.cpp',
   'ausgabe.cpp',
   'beschreibbar.cpp',
   'datei_handler.cpp',
@@ -33,7 +32,6 @@ cpp_dateien     = [                         # hier C++-Dateien einfuegen
   'helfer.cpp',
   'main.cpp',
   'mensch.cpp',
-  'menue.cpp',
   'name.cpp',
   'ort.cpp',
   'person.cpp',
