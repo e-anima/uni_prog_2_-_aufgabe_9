@@ -367,3 +367,52 @@ bool Email_Adresse::addrese_bereits_enthalten(string zu_suchende_adresse) const
   }
   return ist_enthalten;
 }
+
+/**
+ * Ueberlaedt den << Operator.
+ * Gibt die Email-Adresse, mit allen Daten, in den Outputstream.
+ *
+ * @param  ausgabe        Der Outputstream.
+ * @param  email_adresse  Der Email-Adresse, welche in den Outputstream gegeben werden soll.
+ *
+ * @return                Der Outputstream.
+ */
+std::ostream& operator<<(std::ostream& ausgabe, const Email_Adresse& email_adresse)
+{
+  ausgabe << email_adresse.liefere_email_adressen();
+  return ausgabe;
+}
+
+/**
+ * Ueberlaedt den >> Operator.
+ * Somit koennen die Email-Adressen aus dem Inputstream geholt und eingegeben werden.
+ *
+ * @param  ausgabe        Der Inputstream.
+ * @param  email_adresse  Die Email-Adresse, welcher eingegeben werden soll.
+ *
+ * @return                Der Inputstream.
+ */
+std::istream& operator>>(std::istream& eingabe, Email_Adresse& email_adresse)
+{
+  string die_email_adresse = erfasse_string("Bitte geben Sie die Email-Adresse ein", 255);
+  email_adresse = Email_Adresse(die_email_adresse);
+  return eingabe;
+}
+
+/**
+ * Erzeugt eine zufaellige Email-Adresse und gibt diese zurueck.
+ *
+ * @return  Die zufaellig erzeugt Email-Adresse.
+ */
+Email_Adresse erzeuge_zufaellige_email_adresse()
+{
+  Datei_Handler emails            = Datei_Handler(DATEI_EMAILS);
+  Datei_Handler nachnamen         = Datei_Handler(DATEI_NACHNAMEN);
+  Datei_Handler vornamen          = Datei_Handler(DATEI_VORNAMEN);
+  Zufallsgenerierung zufall       = Zufallsgenerierung();
+  string zufaelliger_vorname      = vornamen.liefere_zeile(zufall.erzeuge_zufaelligen_int(0, vornamen.liefere_anzahl_zeilen() - 1));
+  string zufaelliger_nachename    = nachnamen.liefere_zeile(zufall.erzeuge_zufaelligen_int(0, nachnamen.liefere_anzahl_zeilen() - 1));
+  string zufaelliges_email_suffix = emails.liefere_zeile(zufall.erzeuge_zufaelligen_int(0, emails.liefere_anzahl_zeilen() - 1));
+  Email_Adresse die_zufaellige_email_adresse = Email_Adresse(zufaelliger_vorname + "." + zufaelliger_nachename + "@" + zufaelliges_email_suffix);
+  return die_zufaellige_email_adresse;
+}

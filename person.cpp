@@ -17,8 +17,27 @@
  * und der nationalitaet deutsch.
  */
 Person::Person()
+       :Mensch()
 {
   nationalitaet = "deutsch";
+}
+
+/**
+ * Initialisiert eine Person.
+ * Alle Angaben ueber die Person muessen gesetzt werden.
+ *
+ * @param  der_mensch         Das Geschlecht der Person.
+ * @param  der_name           Der Name der Person.
+ * @param  das_geburtsdatum   Das Geburtsdatum der Person.
+ * @param  der_geburtsort     Der Geburtsort der Person.
+ * @param  die_wohnanschrift  Die Wohnanschrift der Person.
+ * @param  die_nationalitaet  Die Nationalitaet der Person.
+ * @param  die_telefonnumer   Die Telefonnummer der Person.
+ */
+Person::Person(Mensch der_mensch, Name der_name, Datum das_geburtsdatum, Ort der_geburtsort, Adresse die_wohnanschrift, string die_nationalitaet, Telefonnummer die_telefonnummer)
+       :Mensch(der_mensch), name(der_name), geburtsdatum(das_geburtsdatum), geburtsort(der_geburtsort), wohnanschrift(die_wohnanschrift), telefonnummer(die_telefonnummer)
+{
+  nationalitaet = die_nationalitaet;
 }
 
 /**
@@ -260,8 +279,8 @@ string Person::liefere_beschreibung() const
   string die_beschreibung = name.liefere_namen();
   die_beschreibung       += "(" + liefere_geschlecht_ausgeschrieben() + ", " + nationalitaet + ")\n";
   die_beschreibung       += "geboren am " + geburtsdatum.liefere_standarddatum() + "\n";
-  die_beschreibung       += "in " + geburtsort.liefere_ortsbeschreibung() + "\n";
-  die_beschreibung       += "ansaessig in " + wohnanschrift.liefere_ortsbeschreibung() + "\n";
+  die_beschreibung       += "in " + geburtsort.liefere_beschreibung() + "\n";
+  die_beschreibung       += "ansaessig in " + wohnanschrift.liefere_beschreibung() + "\n";
   die_beschreibung       += "aktuelle Telefonnummer: " + telefonnummer.liefere_gesamte_nummer();
   return die_beschreibung;
 }
@@ -304,4 +323,24 @@ std::istream& operator>>(std::istream& eingabe, Person& person)
   eingabe >> die_telefonnummer;
   person = Person(geschlecht, der_name, das_geburtsdatum, der_geburtsort, die_wohnanschrift, die_nationalitaet, die_telefonnummer);
   return eingabe;
+}
+
+/**
+ * Erzeugt eine zufaellige Person und gibt diese zurueck.
+ *
+ * @return  Die zufaellig erzeugte Person.
+ */
+Person erzeuge_zufaellige_person()
+{
+  Datei_Handler emails        = Datei_Handler(DATEIORDNER + DATEI_EMAILS);
+  Datei_Handler nationalitaet = Datei_Handler(DATEIORDNER + DATEI_NATIONALITAET);
+  Zufallsgenerierung zufall   = Zufallsgenerierung();
+  Person die_person           = Person(erzeuge_zufaelligen_mensch(),
+                                       erzeuge_zufaelligen_namen(),
+                                       erzeuge_zufaelliges_datum(1970, 1990),
+                                       erzeuge_zufaelligen_ort(),
+                                       erzeuge_zufaellige_adresse(),
+                                       "deutsch",
+                                       erzeuge_zufaellige_telefonnummer());
+  return die_person;
 }

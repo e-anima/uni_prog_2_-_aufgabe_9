@@ -20,7 +20,7 @@ class Uni_Verwaltung
 {
   private:
     /** Liste mit Personen. **/
-    Person *liste;
+    Person **liste;
     /** Die Anzahl der Personen in der Liste. **/
     int anzahl_personen;
 
@@ -34,13 +34,13 @@ class Uni_Verwaltung
     int liefere_anzahl_personen() const;
     Person liefere_person_nach_index(int der_index) const;
 
+    void schreibe_personen_unsortiert();
+
     Uni_Verwaltung& operator=(const Uni_Verwaltung& original);
 
   private:
     void initialisiere_personen();
-    void initialisiere_personen(const Person *die_personen);
+    void loesche_liste();
 };
-
-std::ostream& operator<<(std::ostream& ausgabe, const Uni_Verwaltung& uni_verwaltung);
 
 #endif

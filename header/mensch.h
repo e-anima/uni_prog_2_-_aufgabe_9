@@ -34,4 +34,6 @@ class Mensch : public Beschreibbar
 std::ostream& operator<<(std::ostream& ausgabe, const Mensch& mensch);
 std::istream& operator>>(std::istream& eingabe, Mensch& mensch);
 
+Mensch erzeuge_zufaelligen_mensch();
+
 #endif

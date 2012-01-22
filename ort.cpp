@@ -125,7 +125,7 @@ string Ort::liefere_ortsname() const
  *
  * @return  Die Beschreibung des Ortes.
  */
-string Ort::liefere_ortsbeschreibung() const
+string Ort::liefere_beschreibung() const
 {
   string beschreibung = ortsname;
   beschreibung += (landesteil != "") ? (", " + landesteil) : "";
@@ -143,7 +143,7 @@ string Ort::liefere_ortsbeschreibung() const
  */
 bool Ort::operator<(const Ort& vergleichsort)
 {
-  return liefere_ortsbeschreibung() < vergleichsort.liefere_ortsbeschreibung();
+  return liefere_beschreibung() < vergleichsort.liefere_beschreibung();
 }
 
 /**
@@ -224,7 +224,7 @@ bool Ort::operator>=(const Ort& vergleichsort)
  */
 std::ostream& operator<<(std::ostream& ausgabe, const Ort& ort)
 {
-  ausgabe << ort.liefere_ortsbeschreibung();
+  ausgabe << ort.liefere_beschreibung();
   return ausgabe;
 }
 
@@ -245,4 +245,20 @@ std::istream& operator>>(std::istream& eingabe, Ort& ort)
   string landesteil = erfasse_string("Bitte das Landesteil, in dem der Ort leigt, eingeben", 100);
   ort               = Ort(name, land, landesteil);
   return eingabe;
+}
+
+/**
+ * Erzeugt einen zufaelligen Ort und gibt diesen zurueck.
+ *
+ * @return  Der zufaellige erzeugte Ort.
+ */
+Ort erzeuge_zufaelligen_ort()
+{
+  Datei_Handler bundesland      = Datei_Handler(DATEIORDNER + DATEI_BUNDESLAND);
+  Datei_Handler ort             = Datei_Handler(DATEIORDNER + DATEI_ORT);
+  Zufallsgenerierung zufall     = Zufallsgenerierung();
+  string zufaelliges_bundesland = zufall.erzeuge_zufaelligen_int(0, bundesland.liefere_anzahl_zeilen() - 1);
+  string zufaelliger_ort        = zufall.erzeuge_zufaelligen_int(0, ort.liefere_anzahl_zeilen() - 1);
+  Ort der_zufaellige_ort        = Ort(zufaelliger_ort, "Deutschland", zufaelliges_bundesland);
+  return der_zufaellige_ort;
 }

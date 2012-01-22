@@ -11,6 +11,7 @@
  * und den Studiengang auf angewandte Informatik.
  */
 Professor::Professor()
+          :Angestellter()
 {
   fachbereich = "Fachbereich 4";
   studiengang = "angewandte Informatik";
@@ -150,8 +151,45 @@ Sprechstunde Professor::liefere_sprechstunde() const
  */
 string Professor::liefere_beschreibung() const
 {
-  return Angestellter::liefere_beschreibung() + "\n" +
-         "Der Fachbereich des Professors ist: " + fachbereich + "\n" +
-         "Der Studiengang ist: " + studiengang + "\n" +
-         sprechstunde.liefere_beschreibung();
+  string die_beschreibung = Angestellter::liefere_beschreibung();
+  die_beschreibung       += "Der Professor ist fuer den Fachbereich \"" + fachbereich + "\" zustaendig.\n";
+  die_beschreibung       += "Er unterrichtet im Studiengang \"" + studiengang + "\".\n";
+  die_beschreibung       += sprechstunde.liefere_beschreibung();
+  return die_beschreibung;
+}
+
+/**
+ * Ueberlaedt den << Operator.
+ * Gibt einen Professors, mit allen Daten, in den Outputstream.
+ *
+ * @param  ausgabe    Der Outputstream.
+ * @param  professor  Der Professors, welcher in den Outputstream gegeben werden soll.
+ *
+ * @return            Der Outputstream.
+ */
+std::ostream& operator<<(std::ostream& ausgabe, const Professor& professor)
+{
+  ausgabe << professor.liefere_beschreibung();
+  return ausgabe;
+}
+
+/**
+ * Ueberlaedt den >> Operator.
+ * Somit koennen Personendaten aus dem Inputstream geholt und eingegeben werden.
+ *
+ * @param  ausgabe    Der Inputstream.
+ * @param  professor  Der Professors, welcher eingegeben werden soll.
+ *
+ * @return            Der Inputstream.
+ */
+std::istream& operator>>(std::istream& eingabe, Professor& professor)
+{
+  Angestellter der_angestellte;
+  eingabe >> der_angestellte;
+  string der_fachbereich = erfasse_string("Bitte geben Sie den Fachbreich des Professors an", 50);
+  string der_studiengang = erfasse_string("Bitte geben Sie den Studiengang ein, in dem der Professor unterrichtet", 100);
+  Sprechstunde die_sprechstunde;
+  eingabe >> die_sprechstunde;
+  professor = Professor(der_angestellte, der_fachbereich, der_studiengang, die_sprechstunde);
+  return eingabe;
 }

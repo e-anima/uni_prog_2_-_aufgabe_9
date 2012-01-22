@@ -7,7 +7,9 @@
 #define NAME_H
 
 #include <string>
+#include "datei_handler.h"
 #include "eingabe.h"
+#include "zufallsgenerierung.h"
 
 using namespace std;
 
@@ -30,7 +32,6 @@ class Name
     Name(const string *die_vornamen, int anzahl_vornamen, const string& der_nachname);
     Name(const string& der_vorname, const string *die_nachnamen, int anzahl_nachnamen);
     Name(const string *die_vornamen, int anzahl_vornamen, const string *die_nachnamen, int anzahl_nachnamen);
-
     Name(const Name& original);
 
     virtual ~Name();
@@ -60,5 +61,7 @@ class Name
 
 std::ostream& operator<<(std::ostream& ausgabe, const Name& name);
 std::istream& operator>>(std::istream& eingabe, Name& name);
+
+Name erzeuge_zufaelligen_namen();
 
 #endif

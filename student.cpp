@@ -305,5 +305,51 @@ string Student::liefere_email_adresse_ueber_index(int index) const
 string Student::liefere_beschreibung() const
 {
   string die_beschreibung = Person::liefere_beschreibung();
+  die_beschreibung       += "\n";
+  die_beschreibung       += "Heimatanschrift: " + heimatanschrift.liefere_beschreibung() + "\n";
+  die_beschreibung       += "Datum der Immatrikulation: " + datum_der_immatrikulation.liefere_standarddatum() + "\n";
+  die_beschreibung       += "Matrikelnummer: " + zahl_zu_string(matrikelnummer) + "\n";
+  die_beschreibung       += "Fachbereich: " + fachbereich + "\n";
+  die_beschreibung       += "Studiengang: " + studiengang + "\n";
+  die_beschreibung       += "Email: " + email_adressen.liefere_email_adressen() + "\n";
   return die_beschreibung;
+}
+
+/**
+ * Ueberlaedt den << Operator.
+ * Gibt eine Student, mit allen Daten, in den Outputstream.
+ *
+ * @param  ausgabe  Der Outputstream.
+ * @param  student  Der Student, welcher in den Outputstream gegeben werden soll.
+ *
+ * @return          Der Outputstream.
+ */
+std::ostream& operator<<(std::ostream& ausgabe, const Student& student)
+{
+  ausgabe << student.liefere_beschreibung();
+  return ausgabe;
+}
+
+/**
+ * Ueberlaedt den >> Operator.
+ * Somit koennen Personendaten aus dem Inputstream geholt und eingegeben werden.
+ *
+ * @param  ausgabe  Der Inputstream.
+ * @param  student  Die Student, welcher eingegeben werden soll.
+ *
+ * @return          Der Inputstream.
+ */
+std::istream& operator>>(std::istream& eingabe, Student& student)
+{
+  Person die_person;
+  Adresse die_heimatanschrift;
+  Datum das_datum_der_immatrikulation;
+  Email_Adresse die_email_adresse;
+  eingabe >> die_person >> die_heimatanschrift >> das_datum_der_immatrikulation;
+  int die_matrikelnummer = erfasse_zahl<int>("Bitte geben Sie die Matrikelnummer des Studenten ein");
+  string der_fachbereich = erfasse_string("Bitte geben Sie den Fachbereich des Studenten ein", 255);
+  string der_studiengang = erfasse_string("Bitte geben Sie den Studiengang des Studenten ein", 255);
+  eingabe >> die_email_adresse;
+  student = Student(die_person, die_heimatanschrift, das_datum_der_immatrikulation, die_matrikelnummer, der_fachbereich, der_studiengang, die_email_adresse);
+  return eingabe;
 }

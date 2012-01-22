@@ -56,4 +56,7 @@ class Angestellter : public Person
     virtual string liefere_beschreibung() const;
 };
 
+std::ostream& operator<<(std::ostream& ausgabe, const Angestellter& person);
+std::istream& operator>>(std::istream& eingabe, Angestellter& person);
+
 #endif

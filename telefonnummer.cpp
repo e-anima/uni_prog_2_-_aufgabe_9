@@ -261,3 +261,17 @@ std::istream& operator>>(std::istream& eingabe, Telefonnummer& telefonnummer)
   telefonnummer            = Telefonnummer(teilnehmerkennung, ortsvorwahl, landesvorwahl);
   return eingabe;
 }
+
+/**
+ * Erzeugt eine zufaellige Telefonnumer mit der deutschen Landesvorwahl.
+ *
+ * @return  Die zufaellige erzeugte Telefonnummer.
+ */
+Telefonnummer erzeuge_zufaellige_telefonnummer()
+{
+  Zufallsgenerierung zufall                  = Zufallsgenerierung();
+  string zufaellige_teilnehmerkennung        = zufall.erzeuge_zufaelligen_int(1000000, 9999999);
+  string zufaellige_ortsvorwahl              = zufall.erzeuge_zufaelligen_int(30, 999);
+  Telefonnummer die_zufaellige_telefonnummer = Telefonnummer(zufaellige_teilnehmerkennung, zufaellige_ortsvorwahl);
+  return die_zufaellige_telefonnummer;
+}

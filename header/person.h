@@ -15,6 +15,7 @@
 #include "name.h"
 #include "ort.h"
 #include "telefonnummer.h"
+#include "zufallsgenerierung.h"
 
 class Person : public Mensch
 {
@@ -35,6 +36,7 @@ class Person : public Mensch
 
   public:
     Person();
+    Person(Mensch der_mensch, Name der_name, Datum das_geburtsdatum, Ort der_geburtsort, Adresse die_wohnanschrift, string die_nationalitaet, Telefonnummer die_telefonnummer);
     Person(char das_geschlecht, Name der_name, Datum das_geburtsdatum, Ort der_geburtsort, Adresse die_wohnanschrift, string die_nationalitaet, Telefonnummer die_telefonnummer);
     Person(char das_geschlecht, Name der_name, Datum das_geburtsdatum, Ort der_geburtsort, Adresse die_wohnanschrift, string die_nationalitaet);
     Person(char das_geschlecht, Name der_name, Datum das_geburtsdatum, Ort der_geburtsort, Adresse die_wohnanschrift);
@@ -63,5 +65,7 @@ class Person : public Mensch
 
 std::ostream& operator<<(std::ostream& ausgabe, const Person& person);
 std::istream& operator>>(std::istream& eingabe, Person& person);
+
+Person erzeuge_zufaellige_person();
 
 #endif

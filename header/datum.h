@@ -8,6 +8,7 @@
 #include <sstream>
 #include <string>
 #include "eingabe.h"
+#include "zufallsgenerierung.h"
 
 using std::string;
 
@@ -58,5 +59,7 @@ class Datum
 
 std::ostream& operator<<(std::ostream& ausgabe, const Datum& datum);
 std::istream& operator>>(std::istream& eingabe, Datum& datum);
+
+Datum erzeuge_zufaelliges_datum(int jahr_min = 1583, int jahr_max = 2011);
 
 #endif

@@ -142,3 +142,37 @@ string Sprechstunde::liefere_beschreibung() const
          "von " + uhrzeit_von.liefere_stunden_und_minuten() + "Uhr "
          "bis"  + uhrzeit_bis.liefere_stunden_und_minuten() + "Uhr.";
 }
+
+/**
+ * Ueberlaedt den << Operator.
+ * Gibt eine Sprechstunde, mit allen Daten, in den Outputstream.
+ *
+ * @param  ausgabe       Der Outputstream.
+ * @param  sprechstunde  Die Sprechstunde, welcher in den Outputstream gegeben werden soll.
+ *
+ * @return               Der Outputstream.
+ */
+std::ostream& operator<<(std::ostream& ausgabe, const Sprechstunde& sprechstunde)
+{
+  ausgabe << sprechstunde.liefere_beschreibung();
+  return ausgabe;
+}
+
+/**
+ * Ueberlaedt den >> Operator.
+ * Somit koennen die Daten der Sprechstunde aus dem Inputstream geholt und eingegeben werden.
+ *
+ * @param  ausgabe       Der Inputstream.
+ * @param  sprechstunde  Die Sprechstunde, welcher eingegeben werden soll.
+ *
+ * @return               Der Inputstream.
+ */
+std::istream& operator>>(std::istream& eingabe, Sprechstunde& sprechstunde)
+{
+  string der_wochentag = erfasse_string("Bitte geben Sie den Wochentag der Sprechstunde ein", 10);
+  Zeit die_uhrzeit_von;
+  Zeit die_uhrzeit_bis;
+  eingabe >> die_uhrzeit_von >> die_uhrzeit_bis;
+  sprechstunde = Sprechstunde(der_wochentag, die_uhrzeit_von, die_uhrzeit_bis);
+  return eingabe;
+}

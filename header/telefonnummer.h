@@ -52,4 +52,6 @@ class Telefonnummer
 std::ostream& operator<<(std::ostream& ausgabe, const Telefonnummer& telefonnummer);
 std::istream& operator>>(std::istream& eingabe, Telefonnummer& telefonnummer);
 
+Telefonnummer erzeuge_zufaellige_telefonnummer();
+
 #endif

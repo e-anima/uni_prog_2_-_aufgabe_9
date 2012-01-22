@@ -11,6 +11,16 @@
 #include <string>
 #include <vector>
 
+#define DATEI_BUNDESLAND "files/bundesland.txt"
+#define DATEI_EMAILS "files/emails.txt"
+#define DATEI_FACHBREICH "files/fachbereiche.txt"
+#define DATEI_LAND "files/land.txt"
+#define DATEI_NACHNAMEN "files/nachnamen.txt"
+#define DATEI_NATIONALITAET "files/nationalitaet.txt"
+#define DATEI_ORT "files/ort.txt"
+#define DATEI_STUDIENGANG "files/studiengang.txt"
+#define DATEI_VORNAMEN "files/vornamen.txt"
+
 using namespace std;
 
 class Datei_Handler

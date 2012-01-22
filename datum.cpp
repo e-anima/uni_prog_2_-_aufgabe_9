@@ -582,3 +582,23 @@ std::istream& operator>>(std::istream& eingabe, Datum& datum)
   datum = Datum(tag, monat, jahr);
   return eingabe;
 }
+
+/**
+ * Erzeugt ein zufaelliges Datum, welches zwischen zwei Jahren liegen muss, und gibt dieses zurueck.
+ * Sollte jahr_min groesser als jahr_max sein, werden die beiden vertauscht.
+ *
+ * @param  jahr_min  Das kleinere Datum zum erzeugen des Datums. Default = 1583.
+ * @param  jahr_max  Das groessere Datum zum erzeugen des Datums. Default = 2011.
+ *
+ * @return  Das zufaellig erzeugte Datum.
+ */
+Datum erzeuge_zufaelliges_datum(int jahr_min, int jahr_max)
+{
+  vertausche<int>(jahr_min, jahr_max);
+  Zufallsgenerierung zufall = Zufallsgenerierung();
+  int zufaelliges_jahr      = zufall.erzeuge_zufaelligen_int(jahr_min, jahr_max);
+  int zufaelliger_monat     = zufall.erzeuge_zufaelligen_int(1, 12);
+  int zufaelliger_tag       = zufall.erzeuge_zufaelligen_int(1, 28);
+  Datum das_zufaellige_datum = Datum(zufaelliger_tag, zufaelliger_monat, zufaelliges_jahr);
+  return das_zufaellige_datum;
+}

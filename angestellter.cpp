@@ -12,6 +12,7 @@
  * Setzt die Funktion des Angestellten auf Schreibkraft.
  */
 Angestellter::Angestellter()
+             :Person()
 {
   funktion = "Schreibkraft";
 }
@@ -268,6 +269,12 @@ int Angestellter::liefere_raumnummer_dienstzimmer() const
 string Angestellter::liefere_beschreibung() const
 {
   string die_beschreibung = Person::liefere_beschreibung();
+  die_beschreibung       += "Die Funktion: " + funktion + "\n";
+  die_beschreibung       += "Email: " + email_adressen.liefere_email_adressen() + "\n";
+  die_beschreibung       += "Tele: " + dienstliche_telefonnummer.liefere_gesamte_nummer() + "\n";
+  die_beschreibung       += "Fax: " + dienstliche_faxnummer.liefere_gesamte_nummer() + "\n";
+  die_beschreibung       += "Das Dienstzimmer befindet sich im Gebauede " + gebaeude_dienstzimmer + " ";
+  die_beschreibung       += " Zimmer " + zahl_zu_string(raumnummer_dienstzimmer) + "\n";
   return die_beschreibung;
 }
 
@@ -284,4 +291,28 @@ std::ostream& operator<<(std::ostream& ausgabe, const Angestellter& angestellter
 {
   ausgabe << angestellter.liefere_beschreibung();
   return ausgabe;
+}
+
+/**
+ * Ueberlaedt den >> Operator.
+ * Somit koennen Personendaten aus dem Inputstream geholt und eingegeben werden.
+ *
+ * @param  ausgabe       Der Inputstream.
+ * @param  angestellter  Der Angestellte, welcher eingegeben werden soll.
+ *
+ * @return               Der Inputstream.
+ */
+std::istream& operator>>(std::istream& eingabe, Angestellter& angestellter)
+{
+  Person die_person;
+  Email_Adresse die_email_adressen;
+  Telefonnummer die_dienstliche_telefonnummer;
+  Telefonnummer die_dienstliche_faxnummer;
+  eingabe >> die_person;
+  string die_funktion              = erfasse_string("Welche Funktion hat der Angestellte", 50);
+  eingabe >> die_email_adressen >> die_dienstliche_faxnummer >> die_dienstliche_telefonnummer;
+  string das_gebaeude_dienstzimmer = erfasse_string("In welchem Gebaeude hat der Angestellte sein Dienstzimmer", 10);
+  int die_raumnummer_dienstzimmer  = erfasse_zahl<int>("Welche Raumnummer hat sein Dienstzimmer");
+  angestellter = Angestellter(die_person, die_funktion, die_email_adressen, die_dienstliche_telefonnummer, die_dienstliche_faxnummer, das_gebaeude_dienstzimmer, die_raumnummer_dienstzimmer);
+  return eingabe;
 }

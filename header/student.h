@@ -58,7 +58,9 @@ class Student : public Person
     string liefere_email_adresse_ueber_index(int index) const;
 
     virtual string liefere_beschreibung() const;
-
 };
+
+std::ostream& operator<<(std::ostream& ausgabe, const Student& student);
+std::istream& operator>>(std::istream& eingabe, Student& student);
 
 #endif

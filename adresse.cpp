@@ -230,7 +230,13 @@ string Adresse::liefere_strasse() const
   return strasse;
 }
 
-string Adresse::liefere_ortsbeschreibung() const
+/**
+ * Gibt die ausfuehrliche Beschreibung einer Adresse zurueck.
+ * Ausfuehrlich bedeutet in diesem Zusammenhang, mit allen Informationen, die ueber diese Adresse Vorliegen.
+ *
+ * @return  Die ausfuehrliche Beschreibung einer Adresse.
+ */
+string Adresse::liefere_beschreibung() const
 {
   string adresse = "";
   string hausnummer_als_string   = zahl_zu_string(hausnummer);
@@ -247,42 +253,90 @@ string Adresse::liefere_ortsbeschreibung() const
   {
     adresse += ", "  + postleitzahl_als_string;
   }
-  adresse += ", " + Ort::liefere_ortsbeschreibung();
+  adresse += ", " + Ort::liefere_beschreibung();
   return adresse;
 }
 
+/**
+ * Ueberlaedt den < Operator.
+ * Prueft anhand des Namens, ob eine Adresse kleiner einer anderen ist.
+ *
+ * @param  vergleichsadresse  Die Adresse, mit der der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                    Ein true, wenn die Adresse kleiner ist, bzw. ein false wenn nicht.
+ */
 bool Adresse::operator<(const Adresse& vergleichsadresse)
 {
-  return liefere_ortsbeschreibung() < vergleichsadresse.liefere_ortsbeschreibung();
+  return liefere_beschreibung() < vergleichsadresse.liefere_beschreibung();
 }
 
+/**
+ * Ueberlaedt den > Operator.
+ * Prueft anhand des Namens, ob eine Adresse groesser einer anderen ist.
+ *
+ * @param  vergleichsadresse  Die Adresse, mit der der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                    Ein true, wenn die Adresse groesser ist, bzw. ein false wenn nicht.
+ */
 bool Adresse::operator>(const Adresse& vergleichsadresse)
 {
   return !(*this <= vergleichsadresse);
 }
 
+/**
+ * Ueberlaedt den == Operator.
+ * Prueft, anhand des Namens, ob eine Adresse gleich einer anderen ist.
+ *
+ * @param  vergleichsadresse  Die Adresse, mit der der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                    Ein true, wenn die Adresse gleich ist, bzw. ein false wenn nicht.
+ */
 bool Adresse::operator==(const Adresse& vergleichsadresse)
 {
-  return liefere_ortsbeschreibung() == vergleichsadresse.liefere_ortsbeschreibung();
+  return liefere_beschreibung() == vergleichsadresse.liefere_beschreibung();
 }
 
+/**
+ * Ueberlaedt den != Operator.
+ * Prueft, anhand des Namens, ob eine Adresse ungleich einer anderen ist.
+ *
+ * @param  vergleichsadresse  Die Adresse, mit der der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                    Ein true, wenn die Adresse ungleich ist, bzw. ein false wenn nicht.
+ */
 bool Adresse::operator!=(const Adresse& vergleichsadresse)
 {
   return !(*this == vergleichsadresse);
 }
 
+/**
+ * Ueberlaedt den <= Operator.
+ * Prueft, anhand des Namens, ob eine Adresse kleiner oder gleich einer anderen ist.
+ *
+ * @param  vergleichsadresse  Die Adresse, mit der der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                    Ein true, wenn die Adresse kleiner oder gleich ist, bzw. ein false wenn nicht.
+ */
 bool Adresse::operator<=(const Adresse& vergleichsadresse)
 {
   return (*this < vergleichsadresse || *this == vergleichsadresse);
 }
 
+/**
+ * Ueberlaedt den >= Operator.
+ * Prueft anhand des Namens, ob eine Adresse groesser oder gleich einer anderen ist.
+ *
+ * @param  vergleichsadresse  Die Adresse, mit der der Vergleich durchgefuehrt werden soll.
+ *
+ * @return                    Ein true, wenn die Adresse groesser oder gleich ist, bzw. ein false wenn nicht.
+ */
 bool Adresse::operator>=(const Adresse& vergleichsadresse)
 {
   return (*this > vergleichsadresse || *this == vergleichsadresse);
 }
 
 /**
- * Initialisiert eine Datum.
+ * Initialisiert ein Datum.
  * Wenn die Hausnummer leer gelassen wird, wird sie automatisch auf 0 gesetzt.
  * Wird hingegen zusaetzlich die Strasse leer gelassen, wird diese auf "Musterstrasse" gesetzt
  * und wenn darueber hinaus noch die Postleitzahl leer gelassen wird, wird diese auf 12345 gesetzt.
@@ -309,7 +363,7 @@ void Adresse::initialisiere_adresse(int die_postleitzahl, string die_strasse, in
  */
 std::ostream& operator<<(std::ostream& ausgabe, const Adresse& adresse)
 {
-  ausgabe << adresse.liefere_ortsbeschreibung();
+  ausgabe << adresse.liefere_beschreibung();
   return ausgabe;
 }
 
@@ -332,4 +386,16 @@ std::istream& operator>>(std::istream& eingabe, Adresse& adresse)
   int postleitzahl    = erfasse_zahl<int>("Bitte die Postleitzahl, eingeben", 10000, 99999);
   adresse             = Adresse(der_ort, postleitzahl, strasse, hausnummer);
   return eingabe;
+}
+
+Adresse erzeuge_zufaellige_adresse()
+{
+  Datei_Handler strasse          = Datei_Handler(DATEI_STRASSE);
+  Zufallsgenerierung zufall      = Zufallsgenerierung();
+  int zufaellige_plz             = zufall.erzeuge_zufaelligen_int(10000, 99999);
+  Ort zufaelliger_ort            = erzeuge_zufaelligen_ort();
+  string zufaellige_strasse      = strasse.liefere_zeile(zufall.erzeuge_zufaelligen_int(0, strasse.liefere_anzahl_zeilen() - 1));
+  int zufaellige_hausnummer      = zufall.erzeuge_zufaelligen_int(1, 123);
+  Adresse die_zufaellige_adresse = Adresse(zufaelliger_ort, zufaellige_plz, zufaellige_strasse, zufaellige_hausnummer);
+  return die_zufaellige_adresse;
 }

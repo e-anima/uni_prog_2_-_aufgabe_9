@@ -41,4 +41,7 @@ class Sprechstunde : public Beschreibbar
     virtual string liefere_beschreibung() const;
 };
 
+std::ostream& operator<<(std::ostream& ausgabe, const Sprechstunde& sprechstunde);
+std::istream& operator>>(std::istream& eingabe, Sprechstunde& sprechstunde);
+
 #endif

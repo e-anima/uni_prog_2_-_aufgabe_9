@@ -19,14 +19,18 @@ Uni_Verwaltung::Uni_Verwaltung(int die_anzahl_personen)
 
 Uni_Verwaltung::Uni_Verwaltung(const Uni_Verwaltung& original)
 {
-  delete [] liste;
+  loesche_liste();
   anzahl_personen = original.liefere_anzahl_personen();
-  initialisiere_personen(original.liste);
+  liste = new Person*[anzahl_personen];
+  for (int personen_zaehler = 0; personen_zaehler < anzahl_personen; ++personen_zaehler)
+  {
+    liste[personen_zaehler] = new Person(original.liefere_person_nach_index(personen_zaehler));
+  }
 }
 
 Uni_Verwaltung::~Uni_Verwaltung()
 {
-  delete [] liste;
+  loesche_liste();
 }
 
 int Uni_Verwaltung::liefere_anzahl_personen() const
@@ -36,55 +40,48 @@ int Uni_Verwaltung::liefere_anzahl_personen() const
 
 Person Uni_Verwaltung::liefere_person_nach_index(int der_index) const
 {
-  return liste[der_index];
+  return *liste[der_index];
+}
+
+void Uni_Verwaltung::schreibe_personen_unsortiert()
+{
+  cout << endl;
+  for (int personen_zaehler = 0; personen_zaehler < anzahl_personen; ++personen_zaehler)
+  {
+    cout << liste[personen_zaehler]->liefere_beschreibung() << endl;
+  }
+  schreibe_n_mal('-', 40);
 }
 
 void Uni_Verwaltung::initialisiere_personen()
 {
-  liste = new Person[anzahl_personen];
+  liste = new Person*[anzahl_personen];
   for (int personen_zaehler = 0; personen_zaehler < anzahl_personen; ++personen_zaehler)
   {
-    int modulo_wert = personen_zaehler % 3;
-    if (modulo_wert == 0)
-    {
-      liste[personen_zaehler] = Student();
-    }
-    else if (modulo_wert == 1)
-    {
-      liste[personen_zaehler] = Angestellter();
-    }
-    else
-    {
-      liste[personen_zaehler] = Professor();
-    }
+    liste[personen_zaehler] = new Person();
   }
 }
 
-void Uni_Verwaltung::initialisiere_personen(const Person *die_personen)
+void Uni_Verwaltung::loesche_liste()
 {
-  liste = new Person[anzahl_personen];
   for (int personen_zaehler = 0; personen_zaehler < anzahl_personen; ++personen_zaehler)
   {
-    liste[personen_zaehler] = die_personen[personen_zaehler];
+    delete liste[personen_zaehler];
   }
+  delete [] liste;
 }
 
 Uni_Verwaltung& Uni_Verwaltung::operator=(const Uni_Verwaltung& original)
 {
   if (this != &original)
   {
-    delete [] liste;
+    loesche_liste();
     anzahl_personen = original.liefere_anzahl_personen();
-    initialisiere_personen(original.liste);
+    liste = new Person*[anzahl_personen];
+    for (int personen_zaehler = 0; personen_zaehler < anzahl_personen; ++personen_zaehler)
+    {
+      liste[personen_zaehler] = new Person(original.liefere_person_nach_index(personen_zaehler));
+    }
   }
   return *this;
-}
-
-std::ostream& operator<<(std::ostream& ausgabe, const Uni_Verwaltung& uni_verwaltung)
-{
-  for (int personen_zaehler = 0; personen_zaehler < uni_verwaltung.liefere_anzahl_personen(); ++personen_zaehler)
-  {
-    ausgabe << uni_verwaltung.liefere_person_nach_index(personen_zaehler) << endl;
-  }
-  return ausgabe;
 }

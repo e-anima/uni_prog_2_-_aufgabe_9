@@ -7,8 +7,11 @@
 #define ADRESSE_H
 
 #include <iostream>
+#include "datei_handler.h"
 #include "helfer.h"
 #include "ort.h"
+
+#define DATEI_STRASSE "files/strassen.txt"
 
 class Adresse : public Ort
 {
@@ -41,7 +44,7 @@ class Adresse : public Ort
     int liefere_postleitzahl() const;
     string liefere_strasse() const;
 
-    virtual string liefere_ortsbeschreibung() const;
+    virtual string liefere_beschreibung() const;
 
     bool operator<(const Adresse& vergleichsadresse);
     bool operator>(const Adresse& vergleichsadresse);
@@ -56,5 +59,7 @@ class Adresse : public Ort
 
 std::ostream& operator<<(std::ostream& ausgabe, const Adresse& adresse);
 std::istream& operator>>(std::istream& eingabe, Adresse& adresse);
+
+Adresse erzeuge_zufaellige_adresse();
 
 #endif

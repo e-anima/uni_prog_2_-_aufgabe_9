@@ -8,7 +8,9 @@
 
 #include <string>
 #include "array_helfer.h"
+#include "datei_handler.h"
 #include "eingabe.h"
+#include "zufallsgenerierung.h"
 
 using namespace std;
 
@@ -48,5 +50,10 @@ class Email_Adresse
   private:
     bool addrese_bereits_enthalten(string zu_suchende_adresse) const;
 };
+
+std::ostream& operator<<(std::ostream& ausgabe, const Email_Adresse& email_adresse);
+std::istream& operator>>(std::istream& eingabe, Email_Adresse& email_adresse);
+
+Email_Adresse erzeuge_zufaellige_email_adresse();
 
 #endif

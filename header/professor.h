@@ -43,4 +43,7 @@ class Professor : public Angestellter
     virtual string liefere_beschreibung() const;
 };
 
+std::ostream& operator<<(std::ostream& ausgabe, const Professor& professor);
+std::istream& operator>>(std::istream& eingabe, Professor& professor);
+
 #endif

@@ -428,3 +428,19 @@ std::istream& operator>>(std::istream& eingabe, Name& name)
   name             = Name(vorname, nachname);
   return eingabe;
 }
+
+/**
+ * Erzeugt einen zufaelligen Namen anhand von Textdateien.
+ *
+ * @return  Gibt den zufaelligen Namen zurueck.
+ */
+Name erzeuge_zufaelligen_namen()
+{
+  Datei_Handler nachnamen     = Datei_Handler(DATEIORDNER + DATEI_NACHNAMEN);
+  Datei_Handler vornamen      = Datei_Handler(DATEIORDNER + DATEI_VORNAMEN);
+  Zufallsgenerierung zufall   = Zufallsgenerierung();
+  string zufaelliger_nachname = nachnamen.liefere_zeile(zufall.erzeuge_zufaelligen_int(0, nachnamen.liefere_zeile() - 1));
+  string zufaelliger_vorname  = vornamen.liefere_zeile(zufall.erzeuge_zufaelligen_int(0, vornamen.liefere_anzahl_zeilen() - 1));
+  Name zufaelliger_name       = Name(zufaelliger_vorname, zufaelliger_nachname);
+  return zufaelliger_name;
+}

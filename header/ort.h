@@ -9,11 +9,13 @@
 #include <iomanip>
 #include <iostream>
 #include <string>
+#include "beschreibbar.h"
 #include "eingabe.h"
+#include "zufallsgenerierung.h"
 
 using std::string;
 
-class Ort
+class Ort : public Beschreibbar
 {
   private:
     /** Der Name des Ortes. **/
@@ -36,7 +38,8 @@ class Ort
     string liefere_land() const;
     string liefere_landesteil() const;
     string liefere_ortsname() const;
-    string liefere_ortsbeschreibung() const;
+
+    virtual string liefere_beschreibung() const;
 
     bool operator<(const Ort& vergleichsort);
     bool operator>(const Ort& vergleichsort);
@@ -48,5 +51,7 @@ class Ort
 
 std::ostream& operator<<(std::ostream& ausgabe, const Ort& ort);
 std::istream& operator>>(std::istream& eingabe, Ort& ort);
+
+Ort erzeuge_zufaelligen_ort();
 
 #endif

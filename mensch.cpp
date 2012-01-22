@@ -102,3 +102,16 @@ std::istream& operator>>(std::istream& eingabe, Mensch& mensch)
   mensch = Mensch(geschlecht);
   return eingabe;
 }
+
+/**
+ * Erzeugt einen zufaelligen Menschen und gibt diesen zurueck.
+ *
+ * @return  Der zufaellig generierte Mensch.
+ */
+Mensch erzeuge_zufaelligen_mensch()
+{
+  Zufallsgenerierung zufall = Zufallsgenerierung();
+  char das_geschlecht = (zufall.erzeuge_zufaelligen_int(0, 1) == 1) ? 'w' : 'm';
+  Mensch der_mensch = Mensch(das_geschlecht);
+  return der_mensch;
+}
