@@ -332,15 +332,12 @@ std::istream& operator>>(std::istream& eingabe, Person& person)
  */
 Person erzeuge_zufaellige_person()
 {
-  Datei_Handler emails        = Datei_Handler(DATEIORDNER + DATEI_EMAILS);
-  Datei_Handler nationalitaet = Datei_Handler(DATEIORDNER + DATEI_NATIONALITAET);
-  Zufallsgenerierung zufall   = Zufallsgenerierung();
-  Person die_person           = Person(erzeuge_zufaelligen_mensch(),
-                                       erzeuge_zufaelligen_namen(),
-                                       erzeuge_zufaelliges_datum(1970, 1990),
-                                       erzeuge_zufaelligen_ort(),
-                                       erzeuge_zufaellige_adresse(),
-                                       "deutsch",
-                                       erzeuge_zufaellige_telefonnummer());
+  Person die_person = Person(erzeuge_zufaelligen_mensch(),
+                             erzeuge_zufaelligen_namen(),
+                             erzeuge_zufaelliges_datum(1970, 1990),
+                             erzeuge_zufaelligen_ort(),
+                             erzeuge_zufaellige_adresse(),
+                             "deutsch",
+                             erzeuge_zufaellige_telefonnummer());
   return die_person;
 }

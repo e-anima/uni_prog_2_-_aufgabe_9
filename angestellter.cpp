@@ -316,3 +316,35 @@ std::istream& operator>>(std::istream& eingabe, Angestellter& angestellter)
   angestellter = Angestellter(die_person, die_funktion, die_email_adressen, die_dienstliche_telefonnummer, die_dienstliche_faxnummer, das_gebaeude_dienstzimmer, die_raumnummer_dienstzimmer);
   return eingabe;
 }
+
+/**
+ * Erzeugt einen zufaelligen Angestellten mit einer bestimmten Funktion und gibt diesen zurueck.
+ *
+ * @return  Der zufaellig erzeugte Angestellte.
+ */
+Angestellter erzeuge_zufaelligen_angestellten(string die_funktion)
+{
+  Zufallsgenerierung zufall = Zufallsgenerierung();
+  string das_gebaeude[]     = {"A", "B", "C", "D"};
+  int zufaellige_raumnummer = zufall.erzeuge_zufaelligen_int(1, 230);
+  Angestellter der_zufaellige_angestellte = Angestellter(erzeuge_zufaellige_person(),
+                                                         die_funktion,
+                                                         erzeuge_zufaellige_email_adresse(),
+                                                         erzeuge_zufaellige_telefonnummer(),
+                                                         erzeuge_zufaellige_telefonnummer(),
+                                                         das_gebaeude[zufall.erzeuge_zufaelligen_int(0, 3)],
+                                                         zufaellige_raumnummer);
+  return der_zufaellige_angestellte;
+}
+
+/**
+ * Erzeugt einen zufaelligen Angestellten und gibt diesen zurueck.
+ *
+ * @return  Der zufaellig erzeugte Angestellte.
+ */
+Angestellter erzeuge_zufaelligen_angestellten()
+{
+  Zufallsgenerierung zufall = Zufallsgenerierung();
+  string die_funktion[]     = {"Schreibkraft", "Verwaltungsangestellter", "Laboringenieur"};
+  return erzeuge_zufaelligen_angestellten(die_funktion[zufall.erzeuge_zufaelligen_int(0, 2)]);
+}

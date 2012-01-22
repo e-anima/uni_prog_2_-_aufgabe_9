@@ -66,47 +66,6 @@ int erzeuge_menue()
   return schreibe_menue<string>(menue);
 }
 
-void erzeuge_zufaellige_personen(int anzahl_personen)
-{
-  Datei_Handler emails        = Datei_Handler(DATEIORDNER + DATEI_EMAILS);
-  Datei_Handler fachbereiche  = Datei_Handler(DATEIORDNER + DATEI_FACHBREICH);
-  Datei_Handler land          = Datei_Handler(DATEIORDNER + DATEI_LAND);
-  Datei_Handler nachnamen     = Datei_Handler(DATEIORDNER + DATEI_NACHNAMEN);
-  Datei_Handler nationalitaet = Datei_Handler(DATEIORDNER + DATEI_NATIONALITAET);
-  Datei_Handler ort           = Datei_Handler(DATEIORDNER + DATEI_ORT);
-  Datei_Handler strassen      = Datei_Handler(DATEIORDNER + DATEI_STRASSE);
-  Datei_Handler studiengang   = Datei_Handler(DATEIORDNER + DATEI_STUDIENGANG);
-  Datei_Handler vornamen      = Datei_Handler(DATEIORDNER + DATEI_VORNAMEN);
-  Zufallsgenerierung zufall   = Zufallsgenerierung();
-  for (int personen_zaehler = 0; personen_zaehler < anzahl_personen; ++personen_zaehler)
-  {
-    Person zufaellige_person  = Person();
-    int modulo_wert = personen_zaehler % 3;
-    if (modulo_wert == 0)
-    {
-      liste[personen_zaehler] = new Student();
-    }
-    else if (modulo_wert == 1)
-    {
-      liste[personen_zaehler] = new Angestellter();
-    }
-    else
-    {
-      liste[personen_zaehler] = new Professor();
-    }
-  }
-}
-
-void erzeuge_zufaellige_studenten(int anzahl_studenten)
-{
-  cout << endl << anzahl_studenten << endl;
-  /*liste = new Student*[anzahl_studenten];
-  for (int personen_zaehler = 0; personen_zaehler < anzahl_studenten; ++personen_zaehler)
-  {
-    liste[personen_zaehler] = new Student();
-  }*/
-}
-
 /** Gibt den Begruessungstext, beim Starten des Programms, auf dem Bildschirm aus. */
 void programmstart()
 {

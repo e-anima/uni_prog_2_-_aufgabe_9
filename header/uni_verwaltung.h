@@ -27,6 +27,7 @@ class Uni_Verwaltung
   public:
     Uni_Verwaltung();
     Uni_Verwaltung(int die_anzahl_personen);
+    Uni_Verwaltung(const Person **die_personen, int die_anzahl_personen);
     Uni_Verwaltung(const Uni_Verwaltung& original);
 
     virtual ~Uni_Verwaltung();
@@ -40,7 +41,11 @@ class Uni_Verwaltung
 
   private:
     void initialisiere_personen();
+    void initialisiere_personen(const Person **die_personen);
     void loesche_liste();
 };
+
+Uni_Verwaltung erzeuge_n_zufaellige_personen(int anzahl_personen);
+Uni_Verwaltung erzeuge_n_zufaellige_studenten(int anzahl_studenten);
 
 #endif

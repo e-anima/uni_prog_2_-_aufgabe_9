@@ -13,6 +13,7 @@
 #include "datum.h"
 #include "email_adresse.h"
 #include "person.h"
+#include "zufallsgenerierung.h"
 
 using namespace std;
 
@@ -62,5 +63,7 @@ class Student : public Person
 
 std::ostream& operator<<(std::ostream& ausgabe, const Student& student);
 std::istream& operator>>(std::istream& eingabe, Student& student);
+
+Student erzeuge_zufaelligen_student();
 
 #endif

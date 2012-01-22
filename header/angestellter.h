@@ -9,6 +9,7 @@
 #include "email_adresse.h"
 #include "person.h"
 #include "telefonnummer.h"
+#include "zufallsgenerierung.h"
 
 class Angestellter : public Person
 {
@@ -58,5 +59,8 @@ class Angestellter : public Person
 
 std::ostream& operator<<(std::ostream& ausgabe, const Angestellter& person);
 std::istream& operator>>(std::istream& eingabe, Angestellter& person);
+
+Angestellter erzeuge_zufaelligen_angestellten(string die_funktion);
+Angestellter erzeuge_zufaelligen_angestellten();
 
 #endif

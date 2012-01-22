@@ -476,3 +476,17 @@ std::istream& operator>>(std::istream& eingabe, Zeit& zeit)
   zeit         = Zeit(stunden, minuten, sekunden);
   return eingabe;
 }
+
+/**
+ * Erzeugt eine zufaellige Zeit und gibt diese zurueck.
+ *
+ * @return  Die zufaellig erzeugte Zeit.
+ */
+Zeit erzeuge_zufaellige_zeit()
+{
+  Zufallsgenerierung zufall = Zufallsgenerierung();
+  Zeit die_zufaellige_zeit  = Zeit(zufall.erzeuge_zufaelligen_int(0, 23),
+                                   zufall.erzeuge_zufaelligen_int(0, 59),
+                                   zufall.erzeuge_zufaelligen_int(0, 59));
+  return die_zufaellige_zeit;
+}

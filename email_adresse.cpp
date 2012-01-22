@@ -409,10 +409,9 @@ Email_Adresse erzeuge_zufaellige_email_adresse()
   Datei_Handler emails            = Datei_Handler(DATEI_EMAILS);
   Datei_Handler nachnamen         = Datei_Handler(DATEI_NACHNAMEN);
   Datei_Handler vornamen          = Datei_Handler(DATEI_VORNAMEN);
-  Zufallsgenerierung zufall       = Zufallsgenerierung();
-  string zufaelliger_vorname      = vornamen.liefere_zeile(zufall.erzeuge_zufaelligen_int(0, vornamen.liefere_anzahl_zeilen() - 1));
-  string zufaelliger_nachename    = nachnamen.liefere_zeile(zufall.erzeuge_zufaelligen_int(0, nachnamen.liefere_anzahl_zeilen() - 1));
-  string zufaelliges_email_suffix = emails.liefere_zeile(zufall.erzeuge_zufaelligen_int(0, emails.liefere_anzahl_zeilen() - 1));
+  string zufaelliger_vorname      = vornamen.liefere_zufaellige_zeile();
+  string zufaelliger_nachename    = nachnamen.liefere_zufaellige_zeile();
+  string zufaelliges_email_suffix = emails.liefere_zufaellige_zeile();
   Email_Adresse die_zufaellige_email_adresse = Email_Adresse(zufaelliger_vorname + "." + zufaelliger_nachename + "@" + zufaelliges_email_suffix);
   return die_zufaellige_email_adresse;
 }

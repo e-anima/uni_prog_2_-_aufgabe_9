@@ -11,6 +11,7 @@
 #include <string>
 #include "beschreibbar.h"
 #include "eingabe.h"
+#include "zufallsgenerierung.h"
 
 using std::string;
 

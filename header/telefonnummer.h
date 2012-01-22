@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 #include "eingabe.h"
+#include "zufallsgenerierung.h"
 
 using std::string;
 

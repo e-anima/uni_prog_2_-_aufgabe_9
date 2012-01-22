@@ -11,6 +11,7 @@
 #include <string>
 #include "eingabe.h"
 #include "helfer.h"
+#include "zufallsgenerierung.h"
 
 class Zeit
 {
@@ -60,5 +61,7 @@ class Zeit
 
 std::ostream& operator<<(std::ostream& ausgabe, const Zeit& zeit);
 std::istream& operator>>(std::istream& eingabe, Zeit& zeit);
+
+Zeit erzeuge_zufaellige_zeit();
 
 #endif

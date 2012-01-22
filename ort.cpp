@@ -254,11 +254,10 @@ std::istream& operator>>(std::istream& eingabe, Ort& ort)
  */
 Ort erzeuge_zufaelligen_ort()
 {
-  Datei_Handler bundesland      = Datei_Handler(DATEIORDNER + DATEI_BUNDESLAND);
-  Datei_Handler ort             = Datei_Handler(DATEIORDNER + DATEI_ORT);
-  Zufallsgenerierung zufall     = Zufallsgenerierung();
-  string zufaelliges_bundesland = zufall.erzeuge_zufaelligen_int(0, bundesland.liefere_anzahl_zeilen() - 1);
-  string zufaelliger_ort        = zufall.erzeuge_zufaelligen_int(0, ort.liefere_anzahl_zeilen() - 1);
+  Datei_Handler bundesland      = Datei_Handler(DATEI_BUNDESLAND);
+  Datei_Handler ort             = Datei_Handler(DATEI_ORT);
+  string zufaelliges_bundesland = bundesland.liefere_zufaellige_zeile();
+  string zufaelliger_ort        = ort.liefere_zufaellige_zeile();
   Ort der_zufaellige_ort        = Ort(zufaelliger_ort, "Deutschland", zufaelliges_bundesland);
   return der_zufaellige_ort;
 }

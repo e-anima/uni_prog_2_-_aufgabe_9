@@ -10,6 +10,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include "zufallsgenerierung.h"
 
 #define DATEI_BUNDESLAND "files/bundesland.txt"
 #define DATEI_EMAILS "files/emails.txt"
@@ -39,6 +40,7 @@ class Datei_Handler
 
     string liefere_dateinamen() const;
     string liefere_zeile(unsigned int der_index) const;
+    string liefere_zufaellige_zeile() const;
     unsigned int liefere_anzahl_zeilen() const;
 
   private:

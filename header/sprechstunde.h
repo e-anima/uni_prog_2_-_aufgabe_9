@@ -9,6 +9,7 @@
 #include <string>
 #include "beschreibbar.h"
 #include "zeit.h"
+#include "zufallsgenerierung.h"
 
 using namespace std;
 
@@ -43,5 +44,7 @@ class Sprechstunde : public Beschreibbar
 
 std::ostream& operator<<(std::ostream& ausgabe, const Sprechstunde& sprechstunde);
 std::istream& operator>>(std::istream& eingabe, Sprechstunde& sprechstunde);
+
+Sprechstunde erzeuge_zufaellige_sprechstunde();
 
 #endif

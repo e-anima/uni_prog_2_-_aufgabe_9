@@ -46,6 +46,13 @@ string Datei_Handler::liefere_zeile(unsigned int der_index) const
   return die_zeile;
 }
 
+string Datei_Handler::liefere_zufaellige_zeile() const
+{
+  Zufallsgenerierung zufall = Zufallsgenerierung();
+  int zufaellige_zeile      = zufall.erzeuge_zufaelligen_int(0, zeilen.size() - 1);
+  return zeilen.at(zufaellige_zeile);
+}
+
 unsigned int Datei_Handler::liefere_anzahl_zeilen() const
 {
   return zeilen.size();

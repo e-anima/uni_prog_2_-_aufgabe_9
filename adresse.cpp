@@ -394,7 +394,7 @@ Adresse erzeuge_zufaellige_adresse()
   Zufallsgenerierung zufall      = Zufallsgenerierung();
   int zufaellige_plz             = zufall.erzeuge_zufaelligen_int(10000, 99999);
   Ort zufaelliger_ort            = erzeuge_zufaelligen_ort();
-  string zufaellige_strasse      = strasse.liefere_zeile(zufall.erzeuge_zufaelligen_int(0, strasse.liefere_anzahl_zeilen() - 1));
+  string zufaellige_strasse      = strasse.liefere_zufaellige_zeile();
   int zufaellige_hausnummer      = zufall.erzeuge_zufaelligen_int(1, 123);
   Adresse die_zufaellige_adresse = Adresse(zufaelliger_ort, zufaellige_plz, zufaellige_strasse, zufaellige_hausnummer);
   return die_zufaellige_adresse;

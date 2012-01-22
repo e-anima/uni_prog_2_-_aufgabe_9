@@ -353,3 +353,26 @@ std::istream& operator>>(std::istream& eingabe, Student& student)
   student = Student(die_person, die_heimatanschrift, das_datum_der_immatrikulation, die_matrikelnummer, der_fachbereich, der_studiengang, die_email_adresse);
   return eingabe;
 }
+
+/**
+ * Erzeugt einen zufaelligen Student und gibt diesen zurueck.
+ *
+ * @return  Der zufaellig erzeugte Student.
+ */
+Student erzeuge_zufaelligen_student()
+{
+  Datei_Handler fachbereich      = Datei_Handler(DATEI_FACHBREICH);
+  Datei_Handler studiengang      = Datei_Handler(DATEI_STUDIENGANG);
+  Zufallsgenerierung zufall      = Zufallsgenerierung();
+  int zufaellige_matrikelnnummer = zufall.erzeuge_zufaelligen_long(530000, 539999);
+  string zufaelliger_fachbereich = fachbereich.liefere_zufaellige_zeile();
+  string zufaelliger_studiengang = studiengang.liefere_zufaellige_zeile();
+  Student der_zufaellige_student = Student(erzeuge_zufaellige_person(),
+                                           erzeuge_zufaellige_adresse(),
+                                           erzeuge_zufaelliges_datum(2010, 2010),
+                                           zufaellige_matrikelnnummer,
+                                           zufaelliger_fachbereich,
+                                           zufaelliger_studiengang,
+                                           erzeuge_zufaellige_email_adresse());
+  return der_zufaellige_student;
+}

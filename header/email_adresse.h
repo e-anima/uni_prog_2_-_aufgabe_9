@@ -10,7 +10,6 @@
 #include "array_helfer.h"
 #include "datei_handler.h"
 #include "eingabe.h"
-#include "zufallsgenerierung.h"
 
 using namespace std;
 

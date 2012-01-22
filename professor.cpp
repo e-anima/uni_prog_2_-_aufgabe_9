@@ -193,3 +193,19 @@ std::istream& operator>>(std::istream& eingabe, Professor& professor)
   professor = Professor(der_angestellte, der_fachbereich, der_studiengang, die_sprechstunde);
   return eingabe;
 }
+
+/**
+ * Erzeugt einen zufaelligen Professor und gibt diesen zurueck.
+ *
+ * @return  Der zufaellig erzeugte Professor.
+ */
+Professor erzeuge_zufaelligen_professor()
+{
+  Datei_Handler fachbereich          = Datei_Handler(DATEI_FACHBREICH);
+  Datei_Handler studiengang          = Datei_Handler(DATEI_STUDIENGANG);
+  Professor der_zufaellige_professor = Professor(erzeuge_zufaelligen_angestellten("Professor"),
+                                                 fachbereich.liefere_zufaellige_zeile(),
+                                                 studiengang.liefere_zufaellige_zeile(),
+                                                 erzeuge_zufaellige_sprechstunde());
+  return der_zufaellige_professor;
+}

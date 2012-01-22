@@ -176,3 +176,17 @@ std::istream& operator>>(std::istream& eingabe, Sprechstunde& sprechstunde)
   sprechstunde = Sprechstunde(der_wochentag, die_uhrzeit_von, die_uhrzeit_bis);
   return eingabe;
 }
+
+/**
+ * Erzeugt eine zufaellige Sprechstunde und gibt diese zurueck.
+ *
+ * @return  Die zufaellig erzeugte Sprechstunde.
+ */
+Sprechstunde erzeuge_zufaellige_sprechstunde()
+{
+  Zufallsgenerierung zufall                = Zufallsgenerierung();
+  string wochentage[]                      = {"Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"};
+  Sprechstunde die_zufaellige_sprechstunde = Sprechstunde(wochentage[zufall.erzeuge_zufaelligen_int(0, 6)],
+                                                                  erzeuge_zufaellige_zeit());
+  return die_zufaellige_sprechstunde;
+}

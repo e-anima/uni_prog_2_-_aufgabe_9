@@ -46,4 +46,6 @@ class Professor : public Angestellter
 std::ostream& operator<<(std::ostream& ausgabe, const Professor& professor);
 std::istream& operator>>(std::istream& eingabe, Professor& professor);
 
+Professor erzeuge_zufaelligen_professor();
+
 #endif
